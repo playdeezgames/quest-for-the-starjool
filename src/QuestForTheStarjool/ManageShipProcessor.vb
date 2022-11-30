@@ -24,10 +24,6 @@
         ship.Heading = (newTheta, newPhi)
     End Sub
     Private Sub HandleChangeName(ship As Ship)
-        Dim newName = Utility.SanitizedStringAsk("[olive]New Name?[/]")
-        If String.IsNullOrEmpty(newName) Then
-            Return
-        End If
-        ship.Name = newName
+        ship.Name = Utility.SanitizedStringAsk("[olive]New Name?[/]", ship.Name)
     End Sub
 End Module

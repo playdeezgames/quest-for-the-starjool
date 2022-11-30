@@ -15,10 +15,6 @@
     End Sub
 
     Private Sub HandleChangeName(fellowship As Fellowship)
-        Dim newName = SanitizedStringAsk("[olive]New Name?[/]")
-        If String.IsNullOrWhiteSpace(newName) Then
-            Return
-        End If
-        fellowship.Name = newName
+        fellowship.Name = SanitizedStringAsk("[olive]New Name?[/]", fellowship.Name)
     End Sub
 End Module
