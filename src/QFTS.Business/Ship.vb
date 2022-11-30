@@ -23,9 +23,12 @@
             Return _worldData.Ships(Id).XYZ
         End Get
     End Property
-    ReadOnly Property Heading As (Double, Double)
+    Property Heading As (Double, Double)
         Get
             Return _worldData.Ships(Id).Heading
         End Get
+        Set(value As (Double, Double))
+            _worldData.Ships(Id).Heading = value
+        End Set
     End Property
 End Class

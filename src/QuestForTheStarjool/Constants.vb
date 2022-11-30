@@ -1,5 +1,9 @@
-﻿Module Constants
+﻿Imports System.Threading
+
+Module Constants
+    Friend ReadOnly NormalWorldSize As (Double, Double, Double) = (100.0, 100.0, 100.0)
     Friend Const AbandonGameText = "Abandon Game"
+    Friend Const ChangeHeadingText = "Change Heading"
     Friend Const ChangeNameText = "Change Name"
     Friend Const DoneText = "Done"
     Friend Const GameTitle = "Quest for the Starjool!!"

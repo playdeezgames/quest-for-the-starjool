@@ -1,15 +1,30 @@
 Public Class World
     Private _worldData As WorldData
-    Sub New()
-        _worldData = New WorldData
-
-        Dim random As New Random
+    Sub New(size As (Double, Double, Double))
+        _worldData = New WorldData With {
+                .Size = size
+            }
 
         _worldData.PlayerFellowshipId = CreateFellowship("Yer Company").Id
 
-        CreateShip("Yer Ship", PlayerFellowship, (random.NextDouble * 1000.0, random.NextDouble * 1000.0, random.NextDouble * 1000.0), (random.NextDouble * Math.PI * 2.0 - Math.PI, random.NextDouble * Math.PI / 2.0))
-        CreateShip("Derelict Ship", Nothing, (random.NextDouble * 1000.0, random.NextDouble * 1000.0, random.NextDouble * 1000.0), (random.NextDouble * Math.PI * 2.0 - Math.PI, random.NextDouble * Math.PI / 2.0))
+        CreateShip(
+            "Yer Ship",
+            PlayerFellowship,
+            (RNG.FromRange(0.0, size.Item1), RNG.FromRange(0.0, size.Item2), RNG.FromRange(0.0, size.Item3)),
+            (RNG.FromRange(-Math.PI, Math.PI), RNG.FromRange(0.0, Math.PI)))
+
+        CreateShip(
+            "Derelict Ship",
+            Nothing,
+            (RNG.FromRange(0.0, size.Item1), RNG.FromRange(0.0, size.Item2), RNG.FromRange(0.0, size.Item3)),
+            (RNG.FromRange(-Math.PI, Math.PI), RNG.FromRange(-Math.PI / 2.0, Math.PI / 2.0)))
+
     End Sub
+    Public ReadOnly Property Size As (Double, Double, Double)
+        Get
+            Return _worldData.Size
+        End Get
+    End Property
     Private Function CreateFellowship(name As String) As Fellowship
         Dim id = Guid.NewGuid
         _worldData.Fellowships.Add(id, New FellowshipData With {.Name = name})
