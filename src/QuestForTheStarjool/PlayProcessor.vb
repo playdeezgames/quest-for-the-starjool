@@ -4,10 +4,10 @@
             AnsiConsole.Clear()
             ShowStatus(world.PlayerFellowship)
             Dim prompt As New SelectionPrompt(Of String) With {.Title = "[olive]Now What?[/]"}
-            prompt.AddChoices(ManageFellowshipText, ManageShipsText, AbandonGameText)
+            prompt.AddChoices(ManageFellowshipText, ManageShipsText, GameMenuText)
             Select Case AnsiConsole.Prompt(prompt)
-                Case AbandonGameText
-                    If Confirm("[red]Are you sure you want to abandon the game?[/]") Then
+                Case GameMenuText
+                    If GameMenuProcessor.Run(world) Then
                         Exit Do
                     End If
                 Case ManageFellowshipText

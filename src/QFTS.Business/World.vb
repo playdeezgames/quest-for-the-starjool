@@ -2,7 +2,7 @@ Public Class World
     Private _worldData As WorldData
     Sub New(size As (Double, Double, Double))
         _worldData = New WorldData With {
-                .Size = size
+                .Size = New Double() {size.Item1, size.Item2, size.Item3}
             }
 
         _worldData.PlayerFellowshipId = CreateFellowship("Yer Company").Id
@@ -22,7 +22,7 @@ Public Class World
     End Sub
     Public ReadOnly Property Size As (Double, Double, Double)
         Get
-            Return _worldData.Size
+            Return (_worldData.Size(0), _worldData.Size(1), _worldData.Size(2))
         End Get
     End Property
     Private Function CreateFellowship(name As String) As Fellowship
@@ -35,11 +35,16 @@ Public Class World
         _worldData.Ships.Add(id, New ShipData With {
                                 .Name = name,
                                 .FellowshipId = If(owner Is Nothing, Guid.Empty, owner.Id),
-                                .XYZ = xyz,
-                                .Heading = heading
+                                .XYZ = New Double() {xyz.Item1, xyz.Item2, xyz.Item3},
+                                .Heading = New Double() {heading.Item1, heading.Item2}
                              })
         Return New Ship(_worldData, id)
     End Function
+
+    Public Sub Save(filename As String)
+        File.WriteAllText(filename, JsonSerializer.Serialize(_worldData))
+    End Sub
+
     Public ReadOnly Property PlayerFellowship As Fellowship
         Get
             If _worldData.PlayerFellowshipId.HasValue Then

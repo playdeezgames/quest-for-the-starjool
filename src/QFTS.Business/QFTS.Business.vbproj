@@ -21,6 +21,14 @@
   <ItemGroup>
     <Import Include="QFTS.Business.My" />
     <Import Include="QFTS.Data" />
+    <Import Include="System.Globalization" />
+    <Import Include="System.IO" />
+    <Import Include="System.Text.Encodings.Web" />
+    <Import Include="System.Text.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

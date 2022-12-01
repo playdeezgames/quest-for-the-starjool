@@ -20,15 +20,15 @@
     End Property
     ReadOnly Property XYZ As (Double, Double, Double)
         Get
-            Return _worldData.Ships(Id).XYZ
+            Return (_worldData.Ships(Id).XYZ(0), _worldData.Ships(Id).XYZ(1), _worldData.Ships(Id).XYZ(2))
         End Get
     End Property
     Property Heading As (Double, Double)
         Get
-            Return _worldData.Ships(Id).Heading
+            Return (_worldData.Ships(Id).Heading(0), _worldData.Ships(Id).Heading(1))
         End Get
         Set(value As (Double, Double))
-            _worldData.Ships(Id).Heading = value
+            _worldData.Ships(Id).Heading = New Double() {value.Item1, value.Item2}
         End Set
     End Property
 End Class
