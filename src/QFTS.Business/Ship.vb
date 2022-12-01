@@ -10,8 +10,8 @@
         Dim positionX = XYZ.Item1
         Dim positionY = XYZ.Item2
         Dim positionZ = XYZ.Item3
-        Dim theta = Heading.Item1
-        Dim phi = Heading.Item2
+        Dim theta = Heading.Item1.AsRadians
+        Dim phi = Heading.Item2.AsRadians
         Dim deltaX = Speed * Math.Sin(phi) * Math.Cos(theta)
         Dim deltaY = Speed * Math.Sin(phi) * Math.Sin(theta)
         Dim deltaZ = Speed * Math.Cos(phi)
@@ -41,18 +41,18 @@
     End Property
     Property Heading As (Double, Double)
         Get
-            Return (_worldData.Ships(Id).Heading(0), _worldData.Ships(Id).Heading(1))
+            Return (_worldData.Ships(Id).Heading(0).AsDegrees.Clamp(-180.0, +180.0), _worldData.Ships(Id).Heading(1).AsDegrees.Clamp(0.0, 180.0))
         End Get
         Set(value As (Double, Double))
-            _worldData.Ships(Id).Heading = New Double() {value.Item1, value.Item2}
+            _worldData.Ships(Id).Heading = New Double() {value.Item1.AsRadians, value.Item2.AsRadians}
         End Set
     End Property
     Property Speed As Double
         Get
-            Return _worldData.Ships(Id).Speed
+            Return _worldData.Ships(Id).Speed.ToPercent
         End Get
         Set(value As Double)
-            _worldData.Ships(Id).Speed = value
+            _worldData.Ships(Id).Speed = value.FromPercent.Clamp(0.0, 1.0)
         End Set
     End Property
 End Class
