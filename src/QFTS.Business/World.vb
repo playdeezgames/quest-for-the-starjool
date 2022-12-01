@@ -83,9 +83,12 @@ Public Class World
         _worldData.Ships.Add(id, New ShipData With {
                                 .Name = name,
                                 .FellowshipId = If(owner Is Nothing, Guid.Empty, owner.Id),
-                                .XYZ = New Double() {xyz.Item1, xyz.Item2, xyz.Item3},
-                                .Heading = New Double() {heading.Item1, heading.Item2},
-                                .Speed = speed,
+                                .Interstellar = New InterstellarShipData With
+                                {
+                                    .XYZ = New Double() {xyz.Item1, xyz.Item2, xyz.Item3},
+                                    .Heading = New Double() {heading.Item1, heading.Item2},
+                                    .Speed = speed
+                                },
                                 .Orders = orders
                              })
         Return New Ship(_worldData, id)
