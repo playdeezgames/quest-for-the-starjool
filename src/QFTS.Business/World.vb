@@ -1,6 +1,6 @@
 Public Class World
     Private _worldData As WorldData
-    Sub New(size As (Double, Double, Double))
+    Sub New(size As (Double, Double, Double), minimumStarDistance As Double)
         _worldData = New WorldData With {
                 .Size = New Double() {size.Item1, size.Item2, size.Item3}
             }
@@ -21,7 +21,48 @@ Public Class World
             (RNG.FromRange(-Math.PI, Math.PI), RNG.FromRange(-Math.PI / 2.0, Math.PI / 2.0)),
             0.0)
 
+        GenerateStars(minimumStarDistance)
     End Sub
+    Private Sub GenerateStars(minimumStarDistance As Double)
+        Dim attempts As Integer = 0
+        Do While attempts < 5000
+            Dim xyz = (RNG.FromRange(0.0, Size.Item1), RNG.FromRange(0.0, Size.Item2), RNG.FromRange(0.0, Size.Item3))
+            If Stars.Any(Function(x) x.XYZ.Distance(xyz) < minimumStarDistance) Then
+                attempts += 1
+            Else
+                attempts = 0
+                CreateStar(GenerateStarName(), xyz)
+            End If
+        Loop
+    End Sub
+    Private Function GenerateStarName() As String
+        Dim nameLength = RNG.FromValues(1, 2, 3) + RNG.FromValues(1, 2, 3) + RNG.FromValues(1, 2, 3) + RNG.FromValues(1, 2, 3)
+        Dim isVowel = RNG.FromValues(False, True)
+        Dim result As String = String.Empty
+        While nameLength > 0
+            nameLength -= 1
+            isVowel = Not isVowel
+            If isVowel Then
+                result &= RNG.FromValues("a", "e", "i", "o", "u")
+            Else
+                result &= RNG.FromValues("h", "k", "l", "m", "p")
+            End If
+        End While
+        Return result
+    End Function
+
+    Private Sub CreateStar(name As String, xyz As (Double, Double, Double))
+        _worldData.Stars.Add(Guid.NewGuid, New StarData With {
+                .Name = name,
+                .XYZ = New Double() {xyz.Item1, xyz.Item2, xyz.Item3}
+            })
+    End Sub
+
+    Private ReadOnly Property Stars As IEnumerable(Of Star)
+        Get
+            Return _worldData.Stars.Select(Function(x) New Star(_worldData, x.Key))
+        End Get
+    End Property
     Public ReadOnly Property Size As (Double, Double, Double)
         Get
             Return (_worldData.Size(0), _worldData.Size(1), _worldData.Size(2))

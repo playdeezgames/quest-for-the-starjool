@@ -37,4 +37,8 @@ Module NavigationMath
     Public Function Multiply(position As (Double, Double, Double), scalar As Double) As (Double, Double, Double)
         Return (position.Item1 * scalar, position.Item2 * scalar, position.Item3 * scalar)
     End Function
+    <Extension>
+    Public Function Distance(first As (Double, Double, Double), second As (Double, Double, Double)) As Double
+        Return Math.Sqrt((first.Item1 - second.Item1) * (first.Item1 - second.Item1) + (first.Item2 - second.Item2) * (first.Item2 - second.Item2) + (first.Item3 - second.Item3) * (first.Item3 - second.Item3))
+    End Function
 End Module
