@@ -7,15 +7,7 @@
     End Sub
 
     Friend Sub NextTurn()
-        Dim positionX = XYZ.Item1
-        Dim positionY = XYZ.Item2
-        Dim positionZ = XYZ.Item3
-        Dim theta = Heading.Item1.AsRadians
-        Dim phi = Heading.Item2.AsRadians
-        Dim deltaX = Speed * Math.Sin(phi) * Math.Cos(theta)
-        Dim deltaY = Speed * Math.Sin(phi) * Math.Sin(theta)
-        Dim deltaZ = Speed * Math.Cos(phi)
-        XYZ = (positionX + deltaX, positionY + deltaY, positionZ + deltaZ)
+        XYZ = Heading.AsRadians.AsPosition.Multiply(Speed.FromPercent).Add(XYZ)
     End Sub
 
     Property Name As String
