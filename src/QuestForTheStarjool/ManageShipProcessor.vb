@@ -7,6 +7,7 @@
             AnsiConsole.MarkupLine($"Position: ({ship.XYZ.Item1:F}, {ship.XYZ.Item2:F}, {ship.XYZ.Item3:F})")
             AnsiConsole.MarkupLine($"Heading: ({ship.Heading.Item1:F}°, {ship.Heading.Item2:F}°)")
             AnsiConsole.MarkupLine($"Speed: {ship.Speed:F}%")
+            ShowNearbyStars(ship)
             Dim prompt As New SelectionPrompt(Of String) With {.Title = "[olive]Now What?[/]"}
             prompt.AddChoices(DoneText, ChangeHeadingText, ChangeSpeedText, ChangeNameText)
             Select Case AnsiConsole.Prompt(prompt)
@@ -21,6 +22,19 @@
             End Select
         Loop
     End Sub
+
+    Private Sub ShowNearbyStars(ship As Ship)
+        Dim stars = ship.NearbyStars
+        If Not stars.Any Then
+            Return
+        End If
+        AnsiConsole.MarkupLine("Nearby Stars:")
+        For Each star In stars
+            Dim headingTo = ship.XYZ.HeadingTo(star.XYZ).AsDegrees
+            AnsiConsole.MarkupLine($" - {star.Name} (Distance: {star.XYZ.Distance(ship.XYZ):F}, Heading: ({headingTo.Item1:F}°, {headingTo.Item2:F}°))")
+        Next
+    End Sub
+
     Private Sub HandleChangeSpeed(ship As Ship)
         ship.Speed = AnsiConsole.Ask("[olive]New Speed?[/]", ship.Speed)
     End Sub

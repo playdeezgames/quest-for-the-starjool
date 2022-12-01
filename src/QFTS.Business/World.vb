@@ -1,5 +1,8 @@
 Public Class World
     Private _worldData As WorldData
+    Sub New(worldData As WorldData)
+        _worldData = worldData
+    End Sub
     Sub New(size As (Double, Double, Double), minimumStarDistance As Double)
         _worldData = New WorldData With {
                 .Size = New Double() {size.Item1, size.Item2, size.Item3}
@@ -58,7 +61,7 @@ Public Class World
             })
     End Sub
 
-    Private ReadOnly Property Stars As IEnumerable(Of Star)
+    Public ReadOnly Property Stars As IEnumerable(Of Star)
         Get
             Return _worldData.Stars.Select(Function(x) New Star(_worldData, x.Key))
         End Get

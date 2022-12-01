@@ -10,4 +10,9 @@
             Return (_worldData.Stars(Id).XYZ(0), _worldData.Stars(Id).XYZ(1), _worldData.Stars(Id).XYZ(2))
         End Get
     End Property
+    Public ReadOnly Property Name As String
+        Get
+            Return _worldData.Stars(Id).Name
+        End Get
+    End Property
 End Class

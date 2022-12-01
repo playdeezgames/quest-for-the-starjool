@@ -47,4 +47,15 @@
             _worldData.Ships(Id).Speed = value.FromPercent.Clamp(0.0, 1.0)
         End Set
     End Property
+    Private Const ViewDistance = 10.0
+    ReadOnly Property NearbyStars As IEnumerable(Of Star)
+        Get
+            Return World.Stars.Where(Function(x) x.XYZ.Distance(XYZ) <= ViewDistance)
+        End Get
+    End Property
+    ReadOnly Property World As World
+        Get
+            Return New World(_worldData)
+        End Get
+    End Property
 End Class
