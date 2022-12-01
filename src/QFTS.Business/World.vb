@@ -11,13 +11,15 @@ Public Class World
             "Yer Ship",
             PlayerFellowship,
             (RNG.FromRange(0.0, size.Item1), RNG.FromRange(0.0, size.Item2), RNG.FromRange(0.0, size.Item3)),
-            (RNG.FromRange(-Math.PI, Math.PI), RNG.FromRange(0.0, Math.PI)))
+            (RNG.FromRange(-Math.PI, Math.PI), RNG.FromRange(0.0, Math.PI)),
+            1.0)
 
         CreateShip(
             "Derelict Ship",
             Nothing,
             (RNG.FromRange(0.0, size.Item1), RNG.FromRange(0.0, size.Item2), RNG.FromRange(0.0, size.Item3)),
-            (RNG.FromRange(-Math.PI, Math.PI), RNG.FromRange(-Math.PI / 2.0, Math.PI / 2.0)))
+            (RNG.FromRange(-Math.PI, Math.PI), RNG.FromRange(-Math.PI / 2.0, Math.PI / 2.0)),
+            0.0)
 
     End Sub
     Public ReadOnly Property Size As (Double, Double, Double)
@@ -30,13 +32,14 @@ Public Class World
         _worldData.Fellowships.Add(id, New FellowshipData With {.Name = name})
         Return New Fellowship(_worldData, id)
     End Function
-    Private Function CreateShip(name As String, owner As Fellowship, xyz As (Double, Double, Double), heading As (Double, Double)) As Ship
+    Private Function CreateShip(name As String, owner As Fellowship, xyz As (Double, Double, Double), heading As (Double, Double), speed As Double) As Ship
         Dim id = Guid.NewGuid
         _worldData.Ships.Add(id, New ShipData With {
                                 .Name = name,
                                 .FellowshipId = If(owner Is Nothing, Guid.Empty, owner.Id),
                                 .XYZ = New Double() {xyz.Item1, xyz.Item2, xyz.Item3},
-                                .Heading = New Double() {heading.Item1, heading.Item2}
+                                .Heading = New Double() {heading.Item1, heading.Item2},
+                                .Speed = speed
                              })
         Return New Ship(_worldData, id)
     End Function

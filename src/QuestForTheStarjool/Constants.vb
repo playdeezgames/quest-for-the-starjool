@@ -5,6 +5,7 @@ Module Constants
     Friend Const AbandonGameText = "Abandon Game"
     Friend Const ChangeHeadingText = "Change Heading"
     Friend Const ChangeNameText = "Change Name"
+    Friend Const ChangeSpeedText = "Change Speed"
     Friend Const DoneText = "Done"
     Friend Const GameMenuText = "Game Menu"
     Friend Const GameTitle = "Quest for the Starjool!!"

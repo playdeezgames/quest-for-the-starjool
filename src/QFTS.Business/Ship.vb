@@ -31,4 +31,12 @@
             _worldData.Ships(Id).Heading = New Double() {value.Item1, value.Item2}
         End Set
     End Property
+    Property Speed As Double
+        Get
+            Return _worldData.Ships(Id).Speed
+        End Get
+        Set(value As Double)
+            _worldData.Ships(Id).Speed = value
+        End Set
+    End Property
 End Class
