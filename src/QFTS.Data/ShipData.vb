@@ -4,4 +4,5 @@
     Public Property XYZ As Double()
     Public Property Heading As Double()
     Public Property Speed As Double
+    Public Property Orders As String()
 End Class
