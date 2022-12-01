@@ -4,7 +4,7 @@
             AnsiConsole.Clear()
             ShowStatus(world.PlayerFellowship)
             Dim prompt As New SelectionPrompt(Of String) With {.Title = "[olive]Now What?[/]"}
-            prompt.AddChoices(ManageFellowshipText, ManageShipsText, GameMenuText)
+            prompt.AddChoices(NextTurnText, ManageFellowshipText, ManageShipsText, GameMenuText)
             Select Case AnsiConsole.Prompt(prompt)
                 Case GameMenuText
                     If GameMenuProcessor.Run(world) Then
@@ -14,7 +14,8 @@
                     ManageFellowshipProcessor.Run(world.PlayerFellowship)
                 Case ManageShipsText
                     ManageShipsProcessor.Run(world.PlayerFellowship)
-                Case ManageShipsText
+                Case NextTurnText
+                    NextTurnProcessor.Run(world)
             End Select
         Loop
     End Sub

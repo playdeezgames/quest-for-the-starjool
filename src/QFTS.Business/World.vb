@@ -48,6 +48,18 @@ Public Class World
         File.WriteAllText(filename, JsonSerializer.Serialize(_worldData))
     End Sub
 
+    Private ReadOnly Property Ships As IEnumerable(Of Ship)
+        Get
+            Return _worldData.Ships.Select(Function(x) New Ship(_worldData, x.Key))
+        End Get
+    End Property
+
+    Public Sub NextTurn()
+        For Each ship In Ships
+            ship.NextTurn()
+        Next
+    End Sub
+
     Public ReadOnly Property PlayerFellowship As Fellowship
         Get
             If _worldData.PlayerFellowshipId.HasValue Then

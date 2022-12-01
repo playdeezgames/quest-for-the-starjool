@@ -12,6 +12,7 @@ Module Constants
     Friend Const GoBackText = "Go Back"
     Friend Const ManageFellowshipText = "Manage Fellowship"
     Friend Const ManageShipsText = "Manage Ships"
+    Friend Const NextTurnText = "Next Turn"
     Friend Const NoText = "No"
     Friend Const OkText = "Ok"
     Friend Const QuitText = "Quit"
