@@ -9,6 +9,9 @@
     Friend Sub NextTurn()
         Interstellar.XYZ = Interstellar.Heading.AsRadians.AsPosition.Multiply(Interstellar.Speed.FromPercent).Add(Interstellar.XYZ)
     End Sub
+    Public Function CanEnter(star As Star) As Boolean
+        Return star.XYZ.Distance(Interstellar.XYZ) < InterstellarStarEntranceDistance
+    End Function
 
     Property Name As String
         Get
@@ -28,10 +31,9 @@
             Return New ShipInterstellar(_worldData, Id)
         End Get
     End Property
-    Private Const ViewDistance = 10.0
     ReadOnly Property NearbyStars As IEnumerable(Of Star)
         Get
-            Return World.Stars.Where(Function(x) x.XYZ.Distance(Interstellar.XYZ) <= ViewDistance)
+            Return World.Stars.Where(Function(x) x.XYZ.Distance(Interstellar.XYZ) <= InterstellarViewDistance)
         End Get
     End Property
     ReadOnly Property World As World
@@ -39,4 +41,7 @@
             Return New World(_worldData)
         End Get
     End Property
+    Sub SetOrder(ParamArray tokens As String())
+        _worldData.Ships(Id).Orders = tokens
+    End Sub
 End Class
