@@ -11,7 +11,12 @@
         End Get
     End Property
     Friend Sub NextTurn()
-        Interstellar.XYZ = Interstellar.Heading.AsRadians.AsPosition.Multiply(Interstellar.Speed.FromPercent).Add(Interstellar.XYZ)
+        Select Case Mode
+            Case EnterStarSystemOrder
+            Case StarSystemNavigationOrder
+            Case Else
+                Interstellar.XYZ = Interstellar.Heading.AsRadians.AsPosition.Multiply(Interstellar.Speed.FromPercent).Add(Interstellar.XYZ)
+        End Select
     End Sub
     Public Function CanEnter(star As StarSystem) As Boolean
         Return star.XYZ.Distance(Interstellar.XYZ) < InterstellarStarEntranceDistance
