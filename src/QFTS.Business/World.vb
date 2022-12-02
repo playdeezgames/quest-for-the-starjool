@@ -118,4 +118,7 @@ Public Class World
             Return Nothing
         End Get
     End Property
+    Function GetStarSystem(starSystemId As String) As StarSystem
+        Return New StarSystem(_worldData, Guid.Parse(starSystemId))
+    End Function
 End Class

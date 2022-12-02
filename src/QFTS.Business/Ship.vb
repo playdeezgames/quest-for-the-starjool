@@ -44,4 +44,14 @@
     Sub SetOrder(ParamArray tokens As String())
         _worldData.Ships(Id).Orders = tokens
     End Sub
+    ReadOnly Property Order As String()
+        Get
+            Return _worldData.Ships(Id).Orders
+        End Get
+    End Property
+    ReadOnly Property Mode As String
+        Get
+            Return _worldData.Ships(Id).Orders.FirstOrDefault
+        End Get
+    End Property
 End Class

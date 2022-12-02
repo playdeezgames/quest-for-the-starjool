@@ -1,9 +1,11 @@
-﻿Imports System.Threading
+﻿Imports System.ComponentModel
+Imports System.Threading
 
 Module Constants
     Friend ReadOnly NormalWorldSize As (Double, Double, Double) = (100.0, 100.0, 100.0)
     Friend Const NormalMinimumStarDistance = 10.0
     Friend Const AbandonGameText = "Abandon Game"
+    Friend Const CancelOrderText = "Cancel Order"
     Friend Const ChangeHeadingText = "Change Heading"
     Friend Const ChangeNameText = "Change Name"
     Friend Const ChangeSpeedText = "Change Speed"

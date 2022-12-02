@@ -18,7 +18,7 @@
             Case DoneText
                 Return True
             Case Else
-                ship.SetOrder(EnterStarOrder, table(answer).Id.ToString())
+                ship.SetOrder(EnterStarSystemOrder, table(answer).Id.ToString())
         End Select
         Return False
     End Function

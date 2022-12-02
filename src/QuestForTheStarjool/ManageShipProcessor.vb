@@ -4,9 +4,16 @@
             AnsiConsole.Clear()
             AnsiConsole.MarkupLine($"Serial#: {ship.Id}")
             AnsiConsole.MarkupLine($"Name: {ship.Name}")
-            If ManageInterstellarShipProcessor.Run(ship) Then
-                Exit Do
-            End If
+            Select Case ship.Mode
+                Case EnterStarSystemOrder
+                    If ManageEnterStarSystemShipProcessor.Run(ship) Then
+                        Exit Do
+                    End If
+                Case Else
+                    If ManageInterstellarShipProcessor.Run(ship) Then
+                        Exit Do
+                    End If
+            End Select
         Loop
     End Sub
 
