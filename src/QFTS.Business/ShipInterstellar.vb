@@ -29,4 +29,14 @@
             _worldData.Ships(_shipId).Interstellar.Speed = value.FromPercent.Clamp(0.0, 1.0)
         End Set
     End Property
+    ReadOnly Property NearbyStarSystems As IEnumerable(Of StarSystem)
+        Get
+            Return New World(_worldData).StarSystems.Where(Function(x) x.XYZ.Distance(XYZ) <= InterstellarViewDistance).OrderBy(Function(x) x.XYZ.Distance(XYZ))
+        End Get
+    End Property
+    Public ReadOnly Property NearestStarSystem As StarSystem
+        Get
+            Return NearbyStarSystems.FirstOrDefault
+        End Get
+    End Property
 End Class

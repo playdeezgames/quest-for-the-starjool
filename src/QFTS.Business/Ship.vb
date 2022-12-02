@@ -5,11 +5,6 @@
         _worldData = worldData
         Me.Id = id
     End Sub
-    Public ReadOnly Property NearestStarSystem As StarSystem
-        Get
-            Return NearbyStarSystems.FirstOrDefault
-        End Get
-    End Property
     Friend Sub NextTurn()
         Select Case Mode
             Case EnterStarSystemOrder
@@ -38,11 +33,6 @@
     ReadOnly Property Interstellar As ShipInterstellar
         Get
             Return New ShipInterstellar(_worldData, Id)
-        End Get
-    End Property
-    ReadOnly Property NearbyStarSystems As IEnumerable(Of StarSystem)
-        Get
-            Return World.StarSystems.Where(Function(x) x.XYZ.Distance(Interstellar.XYZ) <= InterstellarViewDistance).OrderBy(Function(x) x.XYZ.Distance(Interstellar.XYZ))
         End Get
     End Property
     ReadOnly Property World As World

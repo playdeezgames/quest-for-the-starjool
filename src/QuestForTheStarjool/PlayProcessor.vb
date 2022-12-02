@@ -51,7 +51,7 @@
         AnsiConsole.Markup($"(entering {starSystem.Name})")
     End Sub
     Private Sub ShowInterstellarShip(ship As Ship)
-        Dim starSystem = ship.NearestStarSystem
+        Dim starSystem = ship.Interstellar.NearestStarSystem
         If starSystem IsNot Nothing Then
             AnsiConsole.Markup($"(near {starSystem.Name}, Distance: {ship.Interstellar.XYZ.Distance(starSystem.XYZ):F})")
         Else
