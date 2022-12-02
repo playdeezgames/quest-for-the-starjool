@@ -35,7 +35,7 @@
             Return $"{Name} (#{Id})"
         End Get
     End Property
-    ReadOnly Property Interstellar As Interstellar
+    ReadOnly Property Interstellar As ShipInterstellar
         Get
             Return New ShipInterstellar(_worldData, Id)
         End Get
