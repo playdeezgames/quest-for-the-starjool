@@ -13,6 +13,7 @@ Module Constants
     Friend Const GameMenuText = "Game Menu"
     Friend Const GameTitle = "Quest for the Starjool!!"
     Friend Const GoBackText = "Go Back"
+    Friend Const HeadForText = "Head For..."
     Friend Const ManageFellowshipText = "Manage Fellowship"
     Friend Const ManageShipsText = "Manage Ships"
     Friend Const NextTurnText = "Next Turn"

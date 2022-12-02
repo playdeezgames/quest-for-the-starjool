@@ -6,6 +6,9 @@
         Dim table = ShowNearbyStars(ship).ToDictionary(Function(x) $"Enter star system {x.UniqueName}", Function(x) x)
         Dim prompt As New SelectionPrompt(Of String) With {.Title = "[olive]Now What?[/]"}
         prompt.AddChoices(DoneText, ChangeHeadingText, ChangeSpeedText, ChangeNameText)
+        If ship.Interstellar.NearbyStarSystems.Any Then
+            prompt.AddChoice(HeadForText)
+        End If
         prompt.AddChoices(table.Keys)
         Dim answer = AnsiConsole.Prompt(prompt)
         Select Case answer
@@ -17,11 +20,28 @@
                 HandleChangeName(ship)
             Case DoneText
                 Return True
+            Case HeadForText
+                HandleHeadFor(ship)
             Case Else
                 ship.SetOrder(EnterStarSystemOrder, table(answer).Id.ToString())
         End Select
         Return False
     End Function
+
+    Private Sub HandleHeadFor(ship As Ship)
+        Dim prompt As New SelectionPrompt(Of String) With {.Title = "[olive]Head for?[/]"}
+        prompt.AddChoice(CancelOrderText)
+        Dim table = ship.Interstellar.NearbyStarSystems.ToDictionary(Function(x) x.UniqueName, Function(x) ship.Interstellar.XYZ.HeadingTo(x.XYZ).AsDegrees)
+        prompt.AddChoices(table.Keys)
+        Dim answer = AnsiConsole.Prompt(prompt)
+        Select Case answer
+            Case CancelOrderText
+                Return
+            Case Else
+                ship.Interstellar.Heading = table(answer)
+        End Select
+    End Sub
+
     Private Function ShowNearbyStars(ship As Ship) As IEnumerable(Of StarSystem)
         Dim result As New List(Of StarSystem)
         Dim stars = ship.Interstellar.NearbyStarSystems
