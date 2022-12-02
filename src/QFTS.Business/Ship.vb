@@ -8,11 +8,38 @@
     Friend Sub NextTurn()
         Select Case Mode
             Case EnterStarSystemOrder
+                OnEnterStarSystem()
             Case StarSystemNavigationOrder
+                OnStarSystemNavigation()
+            Case ExitStarSystemOrder
+                OnExitStarSystem()
             Case Else
-                Interstellar.XYZ = Interstellar.Heading.AsRadians.AsPosition.Multiply(Interstellar.Speed.FromPercent).Add(Interstellar.XYZ)
+                OnInterstellarMovement()
         End Select
     End Sub
+    Private Sub OnExitStarSystem()
+        Throw New NotImplementedException()
+    End Sub
+    Private Sub OnStarSystemNavigation()
+        Throw New NotImplementedException()
+    End Sub
+    Private Sub OnEnterStarSystem()
+        Dim destination = World.GetStarSystem(Order(1))
+        StarSystem.StarSystem = destination
+        StarSystem.XYZ = Interstellar.XYZ.Add(destination.XYZ.Multiply(-1.0)).Multiply(StarSystemScale)
+        StarSystem.Heading = Interstellar.Heading
+        StarSystem.Speed = 1.0
+        SetOrder(StarSystemNavigationOrder)
+    End Sub
+    Public ReadOnly Property StarSystem As ShipStarSystem
+        Get
+            Return New ShipStarSystem(_worldData, Id)
+        End Get
+    End Property
+    Private Sub OnInterstellarMovement()
+        Interstellar.XYZ = Interstellar.Heading.AsRadians.AsPosition.Multiply(Interstellar.Speed.FromPercent).Add(Interstellar.XYZ)
+    End Sub
+
     Public Function CanEnter(star As StarSystem) As Boolean
         Return star.XYZ.Distance(Interstellar.XYZ) < InterstellarStarEntranceDistance
     End Function

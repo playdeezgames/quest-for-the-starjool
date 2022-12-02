@@ -89,6 +89,7 @@ Public Class World
                                     .Heading = New Double() {heading.Item1, heading.Item2},
                                     .Speed = speed
                                 },
+                                .StarSystem = New StarSystemShipData,
                                 .Orders = orders
                              })
         Return New Ship(_worldData, id)

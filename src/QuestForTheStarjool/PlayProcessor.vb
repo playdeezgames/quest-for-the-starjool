@@ -39,6 +39,10 @@
     Private Sub ShowShip(ship As Ship)
         AnsiConsole.Markup($" - {ship.Name}")
         Select Case ship.Mode
+            Case ExitStarSystemOrder
+                ShowExitingStarSystemShip(ship)
+            Case StarSystemNavigationOrder
+                ShowNavigatingStarSystemShip(ship)
             Case EnterStarSystemOrder
                 ShowEnteringStarSystemShip(ship)
             Case Else
@@ -46,6 +50,15 @@
         End Select
         AnsiConsole.WriteLine()
     End Sub
+
+    Private Sub ShowNavigatingStarSystemShip(ship As Ship)
+        AnsiConsole.Markup($"(navigating system {ship.StarSystem.StarSystem.Name})")
+    End Sub
+
+    Private Sub ShowExitingStarSystemShip(ship As Ship)
+        AnsiConsole.Markup($"(exiting {ship.StarSystem.StarSystem.Name})")
+    End Sub
+
     Private Sub ShowEnteringStarSystemShip(ship As Ship)
         Dim starSystem = ship.World.GetStarSystem(ship.Order(1))
         AnsiConsole.Markup($"(entering {starSystem.Name})")
