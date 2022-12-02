@@ -9,7 +9,7 @@
     Friend Sub NextTurn()
         Interstellar.XYZ = Interstellar.Heading.AsRadians.AsPosition.Multiply(Interstellar.Speed.FromPercent).Add(Interstellar.XYZ)
     End Sub
-    Public Function CanEnter(star As Star) As Boolean
+    Public Function CanEnter(star As StarSystem) As Boolean
         Return star.XYZ.Distance(Interstellar.XYZ) < InterstellarStarEntranceDistance
     End Function
 
@@ -31,9 +31,9 @@
             Return New ShipInterstellar(_worldData, Id)
         End Get
     End Property
-    ReadOnly Property NearbyStars As IEnumerable(Of Star)
+    ReadOnly Property NearbyStars As IEnumerable(Of StarSystem)
         Get
-            Return World.Stars.Where(Function(x) x.XYZ.Distance(Interstellar.XYZ) <= InterstellarViewDistance)
+            Return World.StarSystems.Where(Function(x) x.XYZ.Distance(Interstellar.XYZ) <= InterstellarViewDistance)
         End Get
     End Property
     ReadOnly Property World As World

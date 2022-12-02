@@ -26,21 +26,21 @@ Public Class World
             0.0,
             Array.Empty(Of String))
 
-        GenerateStars(minimumStarDistance)
+        GenerateStarSystems(minimumStarDistance)
     End Sub
-    Private Sub GenerateStars(minimumStarDistance As Double)
+    Private Sub GenerateStarSystems(minimumStarDistance As Double)
         Dim attempts As Integer = 0
         Do While attempts < 5000
             Dim xyz = (RNG.FromRange(0.0, Size.Item1), RNG.FromRange(0.0, Size.Item2), RNG.FromRange(0.0, Size.Item3))
-            If Stars.Any(Function(x) x.XYZ.Distance(xyz) < minimumStarDistance) Then
+            If StarSystems.Any(Function(x) x.XYZ.Distance(xyz) < minimumStarDistance) Then
                 attempts += 1
             Else
                 attempts = 0
-                CreateStar(GenerateStarName(), xyz)
+                CreateStarSystem(GenerateStarSystemName(), xyz)
             End If
         Loop
     End Sub
-    Private Function GenerateStarName() As String
+    Private Function GenerateStarSystemName() As String
         Dim nameLength = RNG.FromValues(1, 2, 3) + RNG.FromValues(1, 2, 3) + RNG.FromValues(1, 2, 3) + RNG.FromValues(1, 2, 3)
         Dim isVowel = RNG.FromValues(False, True)
         Dim result As String = String.Empty
@@ -56,16 +56,16 @@ Public Class World
         Return result
     End Function
 
-    Private Sub CreateStar(name As String, xyz As (Double, Double, Double))
-        _worldData.Stars.Add(Guid.NewGuid, New StarData With {
+    Private Sub CreateStarSystem(name As String, xyz As (Double, Double, Double))
+        _worldData.StarSystems.Add(Guid.NewGuid, New StarSystemData With {
                 .Name = name,
                 .XYZ = New Double() {xyz.Item1, xyz.Item2, xyz.Item3}
             })
     End Sub
 
-    Public ReadOnly Property Stars As IEnumerable(Of Star)
+    Public ReadOnly Property StarSystems As IEnumerable(Of StarSystem)
         Get
-            Return _worldData.Stars.Select(Function(x) New Star(_worldData, x.Key))
+            Return _worldData.StarSystems.Select(Function(x) New StarSystem(_worldData, x.Key))
         End Get
     End Property
     Public ReadOnly Property Size As (Double, Double, Double)
