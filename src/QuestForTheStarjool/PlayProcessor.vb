@@ -22,6 +22,40 @@
 
     Private Sub ShowStatus(fellowship As Fellowship)
         AnsiConsole.MarkupLine($"Fellowship: {fellowship.Name}")
-        AnsiConsole.MarkupLine($"Ships: {String.Join(", ", fellowship.Ships.Select(Function(x) x.Name).ToArray)}")
+        ShowShips(fellowship)
+    End Sub
+
+    Private Sub ShowShips(fellowship As Fellowship)
+        Dim ships = fellowship.Ships
+        If Not ships.Any Then
+            Return
+        End If
+        AnsiConsole.MarkupLine("Ships:")
+        For Each ship In ships
+            ShowShip(ship)
+        Next
+    End Sub
+
+    Private Sub ShowShip(ship As Ship)
+        AnsiConsole.Markup($" - {ship.Name}")
+        Select Case ship.Mode
+            Case EnterStarSystemOrder
+                ShowEnteringStarSystemShip(ship)
+            Case Else
+                ShowInterstellarShip(ship)
+        End Select
+        AnsiConsole.WriteLine()
+    End Sub
+    Private Sub ShowEnteringStarSystemShip(ship As Ship)
+        Dim starSystem = ship.World.GetStarSystem(ship.Order(1))
+        AnsiConsole.Markup($"(entering {starSystem.Name})")
+    End Sub
+    Private Sub ShowInterstellarShip(ship As Ship)
+        Dim starSystem = ship.NearestStarSystem
+        If starSystem IsNot Nothing Then
+            AnsiConsole.Markup($"(near {starSystem.Name}, Distance: {ship.Interstellar.XYZ.Distance(starSystem.XYZ):F})")
+        Else
+            AnsiConsole.Markup($"({ship.Interstellar.XYZ.Item1}, {ship.Interstellar.XYZ.Item2}, {ship.Interstellar.XYZ.Item3})")
+        End If
     End Sub
 End Module

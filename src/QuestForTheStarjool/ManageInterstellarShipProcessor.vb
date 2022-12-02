@@ -24,7 +24,7 @@
     End Function
     Private Function ShowNearbyStars(ship As Ship) As IEnumerable(Of StarSystem)
         Dim result As New List(Of StarSystem)
-        Dim stars = ship.NearbyStars
+        Dim stars = ship.NearbyStarSystems
         If Not stars.Any Then
             Return result
         End If
