@@ -23,8 +23,20 @@
     public Sub Fill(column as Integer, row as integer, columns as integer, rows as integer, character as byte, foreground as hue, background as hue) implements ITextGrid.Fill
         for c=0 to columns-1
             for r=0 to rows-1
-                GetCell(column+c,row+r).Plot(character,foreground,background)
+                Plot(column, row, character,foreground,background)
             next
         next
+    End Sub
+    Public Sub Plot(column as Integer, row as integer, character as byte, foreground as hue, background as hue) Implements ITextGrid.Plot
+        GetCell(column,row)?.Plot(character, foreground, background)
+    End Sub
+    Sub WriteText(column as Integer, row as Integer, text as String, foreground as Hue, background as Hue) Implements ITextGrid.WriteText
+        for each character in text
+            Plot(column,row,Cbyte(Ascw(character)),foreground,background)
+            column += 1
+        next
+    End Sub
+    Sub Fill(character as byte, foreground as hue, background as Hue) Implements ITextGrid.Fill
+        Fill(0,0,Columns,Rows,character,foreground,background)
     End Sub
 End Class
