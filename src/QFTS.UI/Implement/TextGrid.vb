@@ -20,4 +20,11 @@
         End If
         Return _textCells(column + row * Columns)
     End Function
+    public Sub Fill(column as Integer, row as integer, columns as integer, rows as integer, character as byte, foreground as hue, background as hue) implements ITextGrid.Fill
+        for c=0 to columns-1
+            for r=0 to rows-1
+                GetCell(column+c,row+r).Plot(character,foreground,background)
+            next
+        next
+    End Sub
 End Class
