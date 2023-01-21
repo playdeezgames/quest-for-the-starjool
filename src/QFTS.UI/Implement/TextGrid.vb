@@ -36,7 +36,7 @@
             column += 1
         next
     End Sub
-    Sub Fill(character as byte, foreground as hue, background as Hue) Implements ITextGrid.Fill
+    Sub FillAll(character as byte, foreground as hue, background as Hue) Implements ITextGrid.FillAll
         Fill(0,0,Columns,Rows,character,foreground,background)
     End Sub
 End Class
