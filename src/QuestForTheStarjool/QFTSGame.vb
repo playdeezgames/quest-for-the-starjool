@@ -19,6 +19,7 @@
     Private destinationRectangles As New List(Of Rectangle)
     Private textGrid As ITextGrid
     Private stateMachine As IStateMachine
+    Private keyboardState As KeyboardState
 
     Sub New()
         graphics = New GraphicsDeviceManager(Me)
@@ -49,9 +50,18 @@
         romFont = Texture2D.FromFile(GraphicsDevice, TextureFilename)
         textGrid = New TextGrid(ViewColumns, ViewRows)
         stateMachine = New StateMachine(textGrid)
+        keyboardState = Keyboard.GetState
     End Sub
 
     Protected Overrides Sub Update(gameTime As GameTime)
+        Dim newKeyboardState = Keyboard.GetState()
+        For Each key In keyboardState.GetPressedKeys().Where(Function(x) Not newKeyboardState.IsKeyDown(x))
+            stateMachine.OnKeyUp(key.ToString())
+        Next
+        For Each key In newKeyboardState.GetPressedKeys().Where(Function(x) Not keyboardState.IsKeyDown(x))
+            stateMachine.OnKeyDown(key.ToString())
+        Next
+        keyboardState = newKeyboardState
         stateMachine.Update(gameTime.ElapsedGameTime)
         MyBase.Update(gameTime)
     End Sub
