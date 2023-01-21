@@ -3,8 +3,8 @@
 
     Const CellWidth = 16
     Const CellHeight = 16
-    Const ViewWidth = 1280
-    Const ViewHeight = 720
+    Const ViewWidth = 852
+    Const ViewHeight = 480
     Const ViewColumns = ViewWidth \ CellWidth
     Const ViewRows = ViewHeight \ CellHeight
     Const TextureColumns = 16
