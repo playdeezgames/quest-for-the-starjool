@@ -7,12 +7,28 @@ Public Class StateMachine
         _textGrid = textGrid
         _x = 0
         _y = 0
+        PutDude()
     End Sub
 
-    Public Sub Update(elapsedGameTime As TimeSpan) Implements IStateMachine.Update
+    private sub ClearDude()
+        if _x<0 orelse _y<0 orelse _x>=_textGrid.Columns orelse _y>=_textGrid.Rows Then 
+            return
+        End If
+        _textGrid.GetCell(_x, _y).Character = 0
+        _textGrid.GetCell(_x, _y).ForegroundHue = Hue.Black
+        _textGrid.GetCell(_x, _y).BackgroundHue = Hue.Black
+    end sub
+
+    private sub PutDude()
+        if _x<0 orelse _y<0 orelse _x>=_textGrid.Columns orelse _y>=_textGrid.Rows Then 
+            return
+        End If
         _textGrid.GetCell(_x, _y).Character = 2
         _textGrid.GetCell(_x, _y).ForegroundHue = Hue.White
         _textGrid.GetCell(_x, _y).BackgroundHue = Hue.Black
+    End sub
+
+    Public Sub Update(elapsedGameTime As TimeSpan) Implements IStateMachine.Update
     End Sub
 
     Public Sub OnKeyUp(keyName As String) Implements IStateMachine.OnKeyUp
@@ -20,6 +36,7 @@ Public Class StateMachine
     End Sub
 
     Public Sub OnKeyDown(keyName As String) Implements IStateMachine.OnKeyDown
+        ClearDude()
         Select Case keyName
             Case Up
                 _y -= 1
@@ -30,5 +47,6 @@ Public Class StateMachine
             Case Right
                 _x += 1
         End Select
+        PutDude()
     End Sub
 End Class
