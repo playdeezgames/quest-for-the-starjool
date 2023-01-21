@@ -5,7 +5,7 @@
     <RootNamespace>QuestForTheStarjool</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
     <OptionStrict>On</OptionStrict>
-    <ImportedNamespaces>Microsoft.Win32.SafeHandles=False,Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.Xna.Framework.Input=False,QFTS.Business=False,QuestForTheStarjool.My=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,QuestForTheStarjool=True</ImportedNamespaces>
+    <ImportedNamespaces>Microsoft.Win32.SafeHandles=False,Microsoft.Xna.Framework=False,Microsoft.Xna.Framework.Graphics=False,Microsoft.Xna.Framework.Input=False,QFTS.UI=False,QuestForTheStarjool.My=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,QuestForTheStarjool=True</ImportedNamespaces>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,7 +27,7 @@
     <Import Include="Microsoft.Xna.Framework" />
     <Import Include="Microsoft.Xna.Framework.Graphics" />
     <Import Include="Microsoft.Xna.Framework.Input" />
-    <Import Include="QFTS.Business" />
+    <Import Include="QFTS.UI" />
     <Import Include="QuestForTheStarjool.My" />
   </ItemGroup>
 
@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QFTS.Business\QFTS.Business.vbproj" />
+    <ProjectReference Include="..\QFTS.UI\QFTS.UI.vbproj" />
   </ItemGroup>
 
 </Project>
