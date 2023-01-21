@@ -1,9 +1,7 @@
-Imports System
-
 Module Program
     Sub Main(args As String())
-        Console.Title = Constants.GameTitle
-        TitleProcessor.Run()
-        MainMenuProcessor.Run()
+        Using game = New QFTSGame()
+            game.Run()
+        End Using
     End Sub
 End Module
