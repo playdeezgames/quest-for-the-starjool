@@ -67,4 +67,8 @@ Public Class StateMachine
         End Select
         PutDude()
     End Sub
+
+    public Sub Reset() Implements IStateMachine.Reset
+        'reset all substates
+    End Sub
 End Class
