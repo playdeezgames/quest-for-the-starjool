@@ -11,6 +11,7 @@
     Const TextureRows = 16
     Const TextureCells = TextureColumns * TextureRows
     Const TextureFilename = "romfont8x8.png"
+    
 
     Private graphics As GraphicsDeviceManager
     Private spriteBatch As SpriteBatch
