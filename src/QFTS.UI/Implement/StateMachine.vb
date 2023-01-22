@@ -1,8 +1,10 @@
 Public Class StateMachine
     Implements IStateMachine
     Private ReadOnly _textGrid As ITextGrid
-    private Readonly _states As New Dictionary(Of State, IState)
-    Sub New(textGrid As ITextGrid)
+    Private ReadOnly _states As New Dictionary(Of State, IState)
+    Private ReadOnly _quit As Action
+    Sub New(textGrid As ITextGrid, quit As Action)
+        _quit = quit
         _textGrid = textGrid
         _state = State.None
         _states.Add(State.Splash, New SplashState(Me, _textGrid))
@@ -36,23 +38,31 @@ Public Class StateMachine
         _states(_state).OnKeyDown(keyName)
     End Sub
 
-    public Sub Reset() Implements IStateMachine.Reset
-        For Each entry in _states
+    Public Sub Reset() Implements IStateMachine.Reset
+        For Each entry In _states
             entry.Value.Reset()
         Next
     End Sub
 
-    Private _state as State
+    Public Sub Quit() Implements IState.Quit
+        _quit()
+    End Sub
+
+    Public Sub SetState(state As State) Implements IState.SetState
+        If state = _state Then
+            Return
+        End If
+        _state = state
+        _states(_state).Reset()
+    End Sub
+
+    Private _state As State
     Public Property State as State Implements IStateMachine.State
         Get
             return _state            
         End Get
         Set(value As State)
-            if value = _state Then
-                return 
-            end if
-            _state = value
-            _states(_state).Reset()
+            SetState(value)
         End Set
     End Property
 End Class

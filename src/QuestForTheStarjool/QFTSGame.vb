@@ -3,7 +3,7 @@
 
     Const CellWidth = 16
     Const CellHeight = 16
-    Const ViewWidth = 852
+    Const ViewWidth = 848
     Const ViewHeight = 480
     Const ViewColumns = ViewWidth \ CellWidth
     Const ViewRows = ViewHeight \ CellHeight
@@ -11,13 +11,13 @@
     Const TextureRows = 16
     Const TextureCells = TextureColumns * TextureRows
     Const TextureFilename = "romfont8x8.png"
-    
 
+
+    Private ReadOnly sourceRectangles As New Dictionary(Of Byte, Rectangle)
+    Private ReadOnly destinationRectangles As New List(Of Rectangle)
     Private graphics As GraphicsDeviceManager
     Private spriteBatch As SpriteBatch
     Private romFont As Texture2D
-    Private ReadOnly sourceRectangles As New Dictionary(Of Byte, Rectangle)
-    Private ReadOnly destinationRectangles As New List(Of Rectangle)
     Private textGrid As ITextGrid
     Private stateMachine As IStateMachine
     Private keyboardState As KeyboardState
@@ -55,7 +55,7 @@
         spriteBatch = New SpriteBatch(GraphicsDevice)
         romFont = Texture2D.FromFile(GraphicsDevice, TextureFilename)
         textGrid = New TextGrid(ViewColumns, ViewRows)
-        stateMachine = New StateMachine(textGrid)
+        stateMachine = New StateMachine(textGrid, Sub() [Exit]())
         keyboardState = Keyboard.GetState
     End Sub
 

@@ -12,12 +12,12 @@ Friend Class SplashState
     End Sub
     Public Overrides Sub Update(elapsed As TimeSpan)
         if _timeRemaining<=elapsed Then
-            _stateMachine.State = State.MainMenu
+            SetState(State.MainMenu)
         Else
             _timeRemaining -= elapsed
         end if
     End Sub
     Public Overrides Sub OnKeyUp(keyName as String)
-        _stateMachine.State = State.MainMenu
+        SetState(State.MainMenu)
     End Sub
 End Class
