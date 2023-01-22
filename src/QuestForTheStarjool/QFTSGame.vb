@@ -16,8 +16,8 @@
     Private graphics As GraphicsDeviceManager
     Private spriteBatch As SpriteBatch
     Private romFont As Texture2D
-    Private sourceRectangles As New Dictionary(Of Byte, Rectangle)
-    Private destinationRectangles As New List(Of Rectangle)
+    Private ReadOnly sourceRectangles As New Dictionary(Of Byte, Rectangle)
+    Private ReadOnly destinationRectangles As New List(Of Rectangle)
     Private textGrid As ITextGrid
     Private stateMachine As IStateMachine
     Private keyboardState As KeyboardState
@@ -26,6 +26,11 @@
         graphics = New GraphicsDeviceManager(Me)
         InitializeSourceRectangles()
         InitializeDestinationRectangles()
+    End Sub
+
+    Protected Overrides Sub Initialize()
+        MyBase.Initialize()
+        Window.Title = "Quest for the Starjool!!"
     End Sub
 
     Private Sub InitializeDestinationRectangles()

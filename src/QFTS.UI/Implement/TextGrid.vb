@@ -20,23 +20,23 @@
         End If
         Return _textCells(column + row * Columns)
     End Function
-    public Sub Fill(column as Integer, row as integer, columns as integer, rows as integer, character as byte, foreground as hue, background as hue) implements ITextGrid.Fill
-        for c=0 to columns-1
-            for r=0 to rows-1
-                Plot(column, row, character,foreground,background)
-            next
-        next
+    Public Sub Fill(column As Integer, row As Integer, columns As Integer, rows As Integer, character As Byte, foreground As Hue, background As Hue) Implements ITextGrid.Fill
+        For c = 0 To columns - 1
+            For r = 0 To rows - 1
+                Plot(column + c, row + r, character, foreground, background)
+            Next
+        Next
     End Sub
-    Public Sub Plot(column as Integer, row as integer, character as byte, foreground as hue, background as hue) Implements ITextGrid.Plot
-        GetCell(column,row)?.Plot(character, foreground, background)
+    Public Sub Plot(column As Integer, row As Integer, character As Byte, foreground As Hue, background As Hue) Implements ITextGrid.Plot
+        GetCell(column, row)?.Plot(character, foreground, background)
     End Sub
-    Sub WriteText(column as Integer, row as Integer, text as String, foreground as Hue, background as Hue) Implements ITextGrid.WriteText
-        for each character in text
-            Plot(column,row,Cbyte(Ascw(character)),foreground,background)
+    Sub WriteText(column As Integer, row As Integer, text As String, foreground As Hue, background As Hue) Implements ITextGrid.WriteText
+        For Each character In text
+            Plot(column, row, CByte(AscW(character)), foreground, background)
             column += 1
-        next
+        Next
     End Sub
-    Sub FillAll(character as byte, foreground as hue, background as Hue) Implements ITextGrid.FillAll
-        Fill(0,0,Columns,Rows,character,foreground,background)
+    Sub FillAll(character As Byte, foreground As Hue, background As Hue) Implements ITextGrid.FillAll
+        Fill(0, 0, Columns, Rows, character, foreground, background)
     End Sub
 End Class
