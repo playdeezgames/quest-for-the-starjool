@@ -7,6 +7,7 @@ Public Class StateMachine
         _state = State.None
         _states.Add(State.Splash, New SplashState(Me, _textGrid))
         _states.Add(State.MainMenu, New MainMenuState(Me, _textGrid))
+        _states.Add(State.ConfirmQuit, New ConfirmQuitState(Me, _textGrid))
         State = State.Splash
     End Sub
 
