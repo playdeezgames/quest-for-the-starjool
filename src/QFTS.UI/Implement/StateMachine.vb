@@ -1,15 +1,19 @@
+Imports QFTS.Business
+
 Public Class StateMachine
     Implements IStateMachine
+    Private ReadOnly _world As IWorld
     Private ReadOnly _textGrid As ITextGrid
     Private ReadOnly _states As New Dictionary(Of State, IState)
     Private ReadOnly _quit As Action
-    Sub New(textGrid As ITextGrid, quit As Action)
+    Sub New(world As IWorld, textGrid As ITextGrid, quit As Action)
+        _world = world
         _quit = quit
         _textGrid = textGrid
         _state = State.None
-        _states.Add(State.Splash, New SplashState(Me, _textGrid))
-        _states.Add(State.MainMenu, New MainMenuState(Me, _textGrid))
-        _states.Add(State.ConfirmQuit, New ConfirmQuitState(Me, _textGrid))
+        _states.Add(State.Splash, New SplashState(world, Me, _textGrid))
+        _states.Add(State.MainMenu, New MainMenuState(world, Me, _textGrid))
+        _states.Add(State.ConfirmQuit, New ConfirmQuitState(world, Me, _textGrid))
         State = State.Splash
     End Sub
 

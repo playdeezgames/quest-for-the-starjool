@@ -1,4 +1,5 @@
 Public Class World
+    Implements IWorld
     Private _worldData As WorldData
     Sub New(worldData As WorldData)
         _worldData = worldData

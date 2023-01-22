@@ -1,37 +1,27 @@
 ﻿Friend Class ConfirmQuitState
     Inherits StateBase
-    Private ReadOnly _menuItems As New List(Of String)
-    Private _menuItemIndex As Integer
+    Private ReadOnly _menu As Menu
     Private Const NoText = "No"
     Private Const YesText = "Yes"
-    Public Sub New(stateMachine As StateMachine, textGrid As ITextGrid)
-        MyBase.New(stateMachine, textGrid)
+    Public Sub New(world As IWorld, stateMachine As StateMachine, textGrid As ITextGrid)
+        MyBase.New(world, stateMachine, textGrid)
+        _menu = New Menu(textGrid, 0, 2, Hue.White, Hue.Black)
     End Sub
     Public Overrides Sub Update(elapsed As TimeSpan)
-        Dim index = 0
-        For Each menuItem In _menuItems
-            If index = _menuItemIndex Then
-                _textGrid.WriteText(0, index + 2, menuItem, Hue.Black, Hue.White)
-            Else
-                _textGrid.WriteText(0, index + 2, menuItem, Hue.White, Hue.Black)
-            End If
-            index += 1
-        Next
+        _menu.Update()
     End Sub
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
         _textGrid.WriteText(0, 0, "Are you sure you want to quit?", Hue.Red, Hue.Black)
-        _menuItems.Clear()
-        _menuItems.Add(NoText)
-        _menuItems.Add(YesText)
-        _menuItemIndex = 0
+        _menu.Clear()
+        _menu.AddItem(NoText)
+        _menu.AddItem(YesText)
     End Sub
     Public Overrides Sub OnKeyUp(keyName As String)
+        If _menu.OnKeyUp(keyName) Then
+            Return
+        End If
         Select Case keyName
-            Case Up
-                _menuItemIndex = (_menuItemIndex + _menuItems.Count - 1) Mod _menuItems.Count
-            Case Down
-                _menuItemIndex = (_menuItemIndex + 1) Mod _menuItems.Count
             Case Escape
                 SetState(State.MainMenu)
             Case Enter
@@ -39,7 +29,7 @@
         End Select
     End Sub
     Private Sub ActivateMenuItem()
-        Select Case _menuItems(_menuItemIndex)
+        Select Case _menu.CurrentItem
             Case YesText
                 Quit()
             Case NoText

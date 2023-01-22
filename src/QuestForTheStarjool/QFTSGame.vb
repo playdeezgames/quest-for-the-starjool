@@ -1,4 +1,6 @@
-﻿Public Class QFTSGame
+﻿Imports QFTS.Business
+
+Public Class QFTSGame
     Inherits Game
 
     Const CellWidth = 16
@@ -21,6 +23,7 @@
     Private textGrid As ITextGrid
     Private stateMachine As IStateMachine
     Private keyboardState As KeyboardState
+    Private world As IWorld
 
     Sub New()
         graphics = New GraphicsDeviceManager(Me)
@@ -55,8 +58,13 @@
         spriteBatch = New SpriteBatch(GraphicsDevice)
         romFont = Texture2D.FromFile(GraphicsDevice, TextureFilename)
         textGrid = New TextGrid(ViewColumns, ViewRows)
-        stateMachine = New StateMachine(textGrid, Sub() [Exit]())
+        world = New World()
+        stateMachine = New StateMachine(world, textGrid, AddressOf OnQuit)
         keyboardState = Keyboard.GetState
+    End Sub
+
+    Private Sub OnQuit()
+        [Exit]()
     End Sub
 
     Protected Overrides Sub Update(gameTime As GameTime)
