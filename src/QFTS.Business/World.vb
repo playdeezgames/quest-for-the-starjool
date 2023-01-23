@@ -101,5 +101,7 @@ Public Class World
             Return
         End If
         _worldData.CharacterCreation.CharacterClass = characterClass
+        'finish character
+        'create world
     End Sub
 End Class
