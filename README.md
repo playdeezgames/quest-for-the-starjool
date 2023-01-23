@@ -1,9 +1,13 @@
 # Quest for the Starjool!!
 
-## Main Menu
+## Finishing Character
 
-* continue
-* abandon
-* start
-
+* Roll HP
+* Roll for Money
+* Load World
+* Create Character
+* Eliminate Character Creation Data
+* Plop Character in World
+* Draw up a town
+* 
 
