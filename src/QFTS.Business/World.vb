@@ -32,12 +32,21 @@ Public Class World
         End Get
     End Property
 
-    Public ReadOnly Property NeedRace As Boolean Implements IWorld.NeedRace
+    Public ReadOnly Property NeedsRace As Boolean Implements IWorld.NeedsRace
         Get
             If _worldData.CharacterCreation Is Nothing Then
                 Return False
             End If
             Return _worldData.CharacterCreation.Race Is Nothing
+        End Get
+    End Property
+
+    Public ReadOnly Property NeedsClass As Boolean Implements IWorld.NeedsClass
+        Get
+            If _worldData.CharacterCreation Is Nothing Then
+                Return False
+            End If
+            Return _worldData.CharacterCreation.CharacterClass Is Nothing
         End Get
     End Property
 
@@ -60,7 +69,7 @@ Public Class World
     End Sub
 
     Public Function CanChooseRace(race As Race) As Boolean Implements IWorld.CanChooseRace
-        If Not NeedRace Then
+        If Not NeedsRace Then
             Return False
         End If
         Return race.CheckAbilities(_worldData.CharacterCreation.Abilities)
@@ -70,6 +79,27 @@ Public Class World
         If Not IsCreatingCharacter Then
             Return
         End If
-        _worldData.CharacterCreation = New CharacterCreationData
+        _worldData.CharacterCreation = Nothing
+    End Sub
+
+    Public Sub ChooseRace(race As Race) Implements IWorld.ChooseRace
+        If Not NeedsRace Then
+            Return
+        End If
+        _worldData.CharacterCreation.Race = race
+    End Sub
+
+    Public Function CanChooseClass(characterClass As CharacterClass) As Boolean Implements IWorld.CanChooseClass
+        If Not NeedsClass Then
+            Return False
+        End If
+        Return characterClass.CheckAbilitiesAndRace(_worldData.CharacterCreation.Abilities, _worldData.CharacterCreation.Race.Value)
+    End Function
+
+    Public Sub ChooseClass(characterClass As CharacterClass) Implements IWorld.ChooseClass
+        If Not NeedsClass Then
+            Return
+        End If
+        _worldData.CharacterCreation.CharacterClass = characterClass
     End Sub
 End Class

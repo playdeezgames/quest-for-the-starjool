@@ -18,6 +18,7 @@ Public Class StateMachine
         _states.Add(State.InPlay, New InPlayState(world, Me, _textGrid, random))
         _states.Add(State.RollAbilities, New RollAbilitiesState(world, Me, _textGrid, random))
         _states.Add(State.ChooseRace, New ChooseRaceState(world, Me, _textGrid, random))
+        _states.Add(State.ChooseClass, New ChooseClassState(world, Me, _textGrid, random))
         State = State.Splash
     End Sub
 

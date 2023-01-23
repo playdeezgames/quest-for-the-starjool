@@ -6,4 +6,6 @@ Public Enum State
     InPlay
     RollAbilities
     ChooseRace
+    ChooseClass
+    Navigation
 End Enum

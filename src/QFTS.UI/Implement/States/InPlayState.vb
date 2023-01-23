@@ -14,8 +14,10 @@
         If _world.IsCreatingCharacter Then
             If _world.NeedsAbilityScores Then
                 SetState(State.RollAbilities)
-            ElseIf _world.NeedRace Then
+            ElseIf _world.NeedsRace Then
                 SetState(State.ChooseRace)
+            ElseIf _world.NeedsClass Then
+                SetState(State.ChooseClass)
             End If
         End If
     End Sub

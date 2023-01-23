@@ -27,9 +27,17 @@
     Private Sub ActivateMenuItem()
         Select Case _menu.CurrentItem
             Case DwarfText
+                _world.ChooseRace(Race.Dwarf)
+                SetState(State.InPlay)
             Case ElfText
+                _world.ChooseRace(Race.Elf)
+                SetState(State.InPlay)
             Case HalflingText
+                _world.ChooseRace(Race.Halfling)
+                SetState(State.InPlay)
             Case HumanText
+                _world.ChooseRace(Race.Human)
+                SetState(State.InPlay)
             Case CancelText
                 _world.RollBackCharacterCreation()
                 SetState(State.MainMenu)
