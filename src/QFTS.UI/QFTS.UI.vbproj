@@ -3,7 +3,7 @@
   <PropertyGroup>
     <RootNamespace>QFTS.UI</RootNamespace>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <ImportedNamespaces>QFTS.Business=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,QFTS.UI=True</ImportedNamespaces>
+    <ImportedNamespaces>QFTS.Business=False,QFTS.Data=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,QFTS.UI=True</ImportedNamespaces>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Import Include="QFTS.Business" />
+    <Import Include="QFTS.Data" />
   </ItemGroup>
 
 </Project>

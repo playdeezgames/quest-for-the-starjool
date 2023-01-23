@@ -3,8 +3,8 @@
     Private ReadOnly _menu As Menu
     Private Const NoText = "No"
     Private Const YesText = "Yes"
-    Public Sub New(world As IWorld, stateMachine As StateMachine, textGrid As ITextGrid)
-        MyBase.New(world, stateMachine, textGrid)
+    Public Sub New(world As IWorld, stateMachine As StateMachine, textGrid As ITextGrid, random As Random)
+        MyBase.New(world, stateMachine, textGrid, random)
         _menu = New Menu(textGrid, 0, 2, Hue.White, Hue.Black)
     End Sub
     Public Overrides Sub Update(elapsed As TimeSpan)

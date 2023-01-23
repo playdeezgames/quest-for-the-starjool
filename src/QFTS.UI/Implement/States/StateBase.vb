@@ -3,10 +3,12 @@ Friend MustInherit Class StateBase
     Private ReadOnly _stateMachine As IStateMachine
     Protected ReadOnly _textGrid As ITextGrid
     Protected ReadOnly _world As IWorld
-    Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)
+    Protected ReadOnly _random As Random
+    Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
         _world = world
         _stateMachine = stateMachine
         _textGrid = textGrid
+        _random = random
     End Sub
     Public MustOverride Sub Update(elapsed As TimeSpan) Implements IState.Update
     Public Overridable Sub OnKeyDown(keyName As String) Implements IState.OnKeyDown

@@ -11,9 +11,13 @@ Public Class StateMachine
         _quit = quit
         _textGrid = textGrid
         _state = State.None
-        _states.Add(State.Splash, New SplashState(world, Me, _textGrid))
-        _states.Add(State.MainMenu, New MainMenuState(world, Me, _textGrid))
-        _states.Add(State.ConfirmQuit, New ConfirmQuitState(world, Me, _textGrid))
+        Dim random As New Random
+        _states.Add(State.Splash, New SplashState(world, Me, _textGrid, random))
+        _states.Add(State.MainMenu, New MainMenuState(world, Me, _textGrid, random))
+        _states.Add(State.ConfirmQuit, New ConfirmQuitState(world, Me, _textGrid, random))
+        _states.Add(State.InPlay, New InPlayState(world, Me, _textGrid, random))
+        _states.Add(State.RollAbilities, New RollAbilitiesState(world, Me, _textGrid, random))
+        _states.Add(State.ChooseRace, New ChooseRaceState(world, Me, _textGrid, random))
         State = State.Splash
     End Sub
 
