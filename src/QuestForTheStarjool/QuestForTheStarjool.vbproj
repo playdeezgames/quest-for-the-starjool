@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -17,7 +17,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="romfont8x8.png">
+    <None Remove="Assets\Maps\Overworld.json" />
+    <None Remove="Assets\Maps\Town1.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\romfont8x8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Maps\Overworld.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Maps\Town1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -12,7 +12,7 @@ Public Class QFTSGame
     Const TextureColumns = 16
     Const TextureRows = 16
     Const TextureCells = TextureColumns * TextureRows
-    Const TextureFilename = "romfont8x8.png"
+    Const TextureFilename = "Assets/Images/romfont8x8.png"
 
 
     Private ReadOnly sourceRectangles As New Dictionary(Of Byte, Rectangle)
