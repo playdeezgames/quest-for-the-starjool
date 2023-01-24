@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="11">
+ <tileset firstgid="1" source="Default.tsx"/>
+ <layer id="1" name="Terrain" width="32" height="32">
+  <data encoding="csv">
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,2,5,5,2,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,
+2,3,3,3,3,3,3,3,3,3,3,3,3,3,2,5,5,2,3,3,3,3,3,3,3,3,3,3,3,3,3,2
+</data>
+ </layer>
+ <objectgroup id="2" name="Triggers">
+  <object id="2" gid="256" x="240" y="16" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+  <object id="4" gid="256" x="256" y="16" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+  <object id="5" gid="256" x="240" y="512" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+  <object id="6" gid="256" x="256" y="512" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+  <object id="7" gid="256" x="0" y="256" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+  <object id="8" gid="256" x="0" y="272" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+  <object id="9" gid="256" x="496" y="256" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+  <object id="10" gid="256" x="496" y="272" width="16" height="16">
+   <properties>
+    <property name="DestinationMap" value="Overworld"/>
+    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="10"/>
+    <property name="TriggerType" value="Teleport"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

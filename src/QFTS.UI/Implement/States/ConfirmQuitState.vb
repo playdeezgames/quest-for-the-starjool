@@ -1,8 +1,6 @@
 ﻿Friend Class ConfirmQuitState
     Inherits StateBase
     Private ReadOnly _menu As Menu
-    Private Const NoText = "No"
-    Private Const YesText = "Yes"
     Public Sub New(world As IWorld, stateMachine As StateMachine, textGrid As ITextGrid, random As Random)
         MyBase.New(world, stateMachine, textGrid, random)
         _menu = New Menu(textGrid, 0, 2, Hue.White, Hue.Black)
@@ -12,7 +10,7 @@
     End Sub
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.WriteText(0, 0, "Are you sure you want to quit?", Hue.Red, Hue.Black)
+        _textGrid.WriteText(0, 0, ConfirmQuitHeader, Hue.Red, Hue.Black)
         _menu.Clear()
         _menu.AddItem(NoText)
         _menu.AddItem(YesText)

@@ -1,7 +1,7 @@
 ﻿Friend Class RollAbilitiesState
     Inherits StateBase
-    Private _abilities As New Dictionary(Of Ability, Integer)
-    Private _menu As IMenu
+    Private ReadOnly _abilities As New Dictionary(Of Ability, Integer)
+    Private ReadOnly _menu As IMenu
 
     Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
         MyBase.New(world, stateMachine, textGrid, random)
@@ -18,9 +18,6 @@
         _menu.Update()
     End Sub
 
-    Private Const AcceptText = "Accept"
-    Private Const RerollText = "Re-roll"
-
     Public Overrides Sub Reset()
         _menu.Clear()
         _menu.AddItem(AcceptText)
@@ -28,14 +25,14 @@
         _menu.AddItem(CancelText)
 
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.WriteText(0, 0, "Roll Abilities:", Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 0, RollAbilitiesHeader, Hue.White, Hue.Black)
 
-        _textGrid.WriteText(0, 2, "STR", Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 3, "INT", Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 4, "WIS", Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 5, "DEX", Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 6, "CON", Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 7, "CHA", Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 2, Ability.Strength.Abbreviation, Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 3, Ability.Intelligence.Abbreviation, Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 4, Ability.Wisdom.Abbreviation, Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 5, Ability.Dexterity.Abbreviation, Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 6, Ability.Constitution.Abbreviation, Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 7, Ability.Charisma.Abbreviation, Hue.White, Hue.Black)
         RollAbilities()
     End Sub
 

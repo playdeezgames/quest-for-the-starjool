@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 
 Public Module RaceExtensions
+    Public ReadOnly AllRaces As IReadOnlyList(Of Race) = New List(Of Race) From {Race.Dwarf, Race.Elf, Race.Halfling, Race.Human}
     <Extension>
     Public Function CheckAbilities(race As Race, abilities As IReadOnlyDictionary(Of Ability, Integer)) As Boolean
         Select Case race
@@ -12,6 +13,21 @@ Public Module RaceExtensions
                 Return abilities(Ability.Dexterity) >= 9 AndAlso abilities(Ability.Strength) <= 17
             Case Race.Human
                 Return True
+            Case Else
+                Throw New NotImplementedException
+        End Select
+    End Function
+    <Extension>
+    Public Function Name(race As Race) As String
+        Select Case race
+            Case Race.Dwarf
+                Return "Dwarf"
+            Case Race.Elf
+                Return "Elf"
+            Case Race.Halfling
+                Return "Halfling"
+            Case Race.Human
+                Return "Human"
             Case Else
                 Throw New NotImplementedException
         End Select

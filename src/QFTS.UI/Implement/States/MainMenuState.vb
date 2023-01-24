@@ -1,17 +1,13 @@
 Friend Class MainMenuState
     Inherits StateBase
     Private ReadOnly _menu As IMenu
-    Private Const StartText = "Start Game"
-    Private Const AbandonText = "Abandon Game"
-    Private Const ContinueGame = "Continue Game"
-    Private Const QuitText = "Quit"
     Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
         MyBase.New(world, stateMachine, textGrid, random)
         _menu = New Menu(textGrid, 0, 2, Hue.White, Hue.Black)
     End Sub
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.WriteText(0, 0, "Main Menu", Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 0, MainMenuHeader, Hue.White, Hue.Black)
 
         _menu.Clear()
         If _world.CanStart Then

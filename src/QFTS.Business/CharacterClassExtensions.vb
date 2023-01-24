@@ -1,6 +1,15 @@
 ﻿Imports System.Runtime.CompilerServices
 
 Public Module CharacterClassExtensions
+    Public ReadOnly AllClasses As IReadOnlyList(Of CharacterClass) = New List(Of CharacterClass) From
+        {
+            CharacterClass.Cleric,
+            CharacterClass.Fighter,
+            CharacterClass.FighterMagicUser,
+            CharacterClass.MagicUser,
+            CharacterClass.MagicUserThief,
+            CharacterClass.Thief
+        }
     <Extension>
     Public Function CheckAbilitiesAndRace(characterClass As CharacterClass, abilities As IReadOnlyDictionary(Of Ability, Integer), race As Race) As Boolean
         Select Case characterClass
@@ -16,6 +25,25 @@ Public Module CharacterClassExtensions
                 Return abilities(Ability.Dexterity) >= 9 AndAlso abilities(Ability.Intelligence) >= 9 AndAlso race = Race.Elf
             Case CharacterClass.Thief
                 Return abilities(Ability.Dexterity) >= 9
+            Case Else
+                Throw New NotImplementedException
+        End Select
+    End Function
+    <Extension>
+    Public Function Name(characterClass As CharacterClass) As String
+        Select Case characterClass
+            Case CharacterClass.Cleric
+                Return "Cleric"
+            Case CharacterClass.Fighter
+                Return "Fighter"
+            Case CharacterClass.FighterMagicUser
+                Return "Fighter/Magic-User"
+            Case CharacterClass.MagicUser
+                Return "Magic-User"
+            Case CharacterClass.MagicUserThief
+                Return "Magic-User/Thief"
+            Case CharacterClass.Thief
+                Return "Thief"
             Case Else
                 Throw New NotImplementedException
         End Select

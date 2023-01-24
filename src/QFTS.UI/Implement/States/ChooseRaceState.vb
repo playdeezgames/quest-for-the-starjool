@@ -1,6 +1,6 @@
 ﻿Friend Class ChooseRaceState
     Inherits StateBase
-    Private _menu As IMenu
+    Private ReadOnly _menu As IMenu
 
     Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
         MyBase.New(world, stateMachine, textGrid, random)
@@ -17,8 +17,7 @@
         End If
         Select Case keyName
             Case Escape
-                _world.RollBackCharacterCreation()
-                SetState(State.MainMenu)
+                RollBackCharacterCreation()
             Case Enter
                 ActivateMenuItem()
         End Select
@@ -26,45 +25,32 @@
 
     Private Sub ActivateMenuItem()
         Select Case _menu.CurrentItem
-            Case DwarfText
-                _world.ChooseRace(Race.Dwarf)
-                SetState(State.InPlay)
-            Case ElfText
-                _world.ChooseRace(Race.Elf)
-                SetState(State.InPlay)
-            Case HalflingText
-                _world.ChooseRace(Race.Halfling)
-                SetState(State.InPlay)
-            Case HumanText
-                _world.ChooseRace(Race.Human)
-                SetState(State.InPlay)
             Case CancelText
-                _world.RollBackCharacterCreation()
-                SetState(State.MainMenu)
+                RollBackCharacterCreation()
+            Case Else
+                ChooseRace(AllRaces.Single(Function(x) x.Name = _menu.CurrentItem))
         End Select
     End Sub
 
-    Private Const DwarfText = "Dwarf"
-    Private Const ElfText = "Elf"
-    Private Const HalflingText = "Halfling"
-    Private Const HumanText = "Human"
+    Private Sub RollBackCharacterCreation()
+        _world.RollBackCharacterCreation()
+        SetState(State.MainMenu)
+    End Sub
+
+    Private Sub ChooseRace(race As Race)
+        _world.ChooseRace(race)
+        SetState(State.InPlay)
+    End Sub
 
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.WriteText(0, 0, "Choose Race:", Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 0, ChooseRaceHeader, Hue.White, Hue.Black)
         _menu.Clear()
-        If _world.CanChooseRace(Race.Dwarf) Then
-            _menu.AddItem(DwarfText)
-        End If
-        If _world.CanChooseRace(Race.Elf) Then
-            _menu.AddItem(ElfText)
-        End If
-        If _world.CanChooseRace(Race.Halfling) Then
-            _menu.AddItem(HalflingText)
-        End If
-        If _world.CanChooseRace(Race.Human) Then
-            _menu.AddItem(HumanText)
-        End If
+        For Each race In AllRaces
+            If _world.CanChooseRace(race) Then
+                _menu.AddItem(race.Name)
+            End If
+        Next
         _menu.AddItem(CancelText)
     End Sub
 End Class

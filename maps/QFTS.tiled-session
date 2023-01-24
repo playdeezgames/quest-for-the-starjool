@@ -1,0 +1,61 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Town1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Default.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Overworld.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 249,
+                "y": 117.33333333333333
+            }
+        },
+        "Town1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 1.6624999999999999,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 256.2406015037594,
+                "y": 256.2406015037594
+            }
+        }
+    },
+    "last.imagePath": "E:/GIT/quest-for-the-starjool/maps",
+    "map.height": 256,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 256,
+    "openFiles": [
+        "Default.tsx",
+        "Town1.tmx",
+        "Overworld.tmx"
+    ],
+    "project": "QFTS.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "Default.tsx",
+        "Overworld.tmx",
+        "Town1.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

@@ -30,20 +30,10 @@
 
     Private Sub ActivateMenuItem()
         Select Case _menu.CurrentItem
-            Case ClericText
-                ChooseClass(CharacterClass.Cleric)
-            Case FighterMagicUserText
-                ChooseClass(CharacterClass.FighterMagicUser)
-            Case FighterText
-                ChooseClass(CharacterClass.Fighter)
-            Case MagicUserText
-                ChooseClass(CharacterClass.MagicUser)
-            Case MagicUserThiefText
-                ChooseClass(CharacterClass.MagicUserThief)
-            Case ThiefText
-                ChooseClass(CharacterClass.Thief)
             Case CancelText
                 GoBackToMainMenu()
+            Case Else
+                ChooseClass(AllClasses.Single(Function(x) x.Name = _menu.CurrentItem))
         End Select
     End Sub
 
@@ -54,33 +44,13 @@
 
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.WriteText(0, 0, "Choose Class:", Hue.White, Hue.Black)
+        _textGrid.WriteText(0, 0, ChooseClassHeader, Hue.White, Hue.Black)
         _menu.Clear()
-        If _world.CanChooseClass(CharacterClass.Cleric) Then
-            _menu.AddItem(ClericText)
-        End If
-        If _world.CanChooseClass(CharacterClass.Fighter) Then
-            _menu.AddItem(FighterText)
-        End If
-        If _world.CanChooseClass(CharacterClass.FighterMagicUser) Then
-            _menu.AddItem(FighterMagicUserText)
-        End If
-        If _world.CanChooseClass(CharacterClass.MagicUser) Then
-            _menu.AddItem(MagicUserText)
-        End If
-        If _world.CanChooseClass(CharacterClass.MagicUserThief) Then
-            _menu.AddItem(MagicUserThiefText)
-        End If
-        If _world.CanChooseClass(CharacterClass.Thief) Then
-            _menu.AddItem(ThiefText)
-        End If
+        For Each characterClass In AllClasses
+            If _world.CanChooseClass(characterClass) Then
+                _menu.AddItem(characterClass.Name)
+            End If
+        Next
         _menu.AddItem(CancelText)
     End Sub
-
-    Private Const ThiefText = "Thief"
-    Private Const MagicUserThiefText = "Magic-User/Thief"
-    Private Const MagicUserText = "Magic-User"
-    Private Const FighterMagicUserText = "Fighter/Magic-User"
-    Private Const FighterText = "Fighter"
-    Private Const ClericText = "Cleric"
 End Class
