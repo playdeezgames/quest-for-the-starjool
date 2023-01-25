@@ -15,7 +15,7 @@
         _menu.AddItem(NoText)
         _menu.AddItem(YesText)
     End Sub
-    Public Overrides Sub OnKeyUp(keyName As String)
+    Public Overrides Sub OnKeyUp(keyName As String, random As Random)
         If _menu.OnKeyUp(keyName) Then
             Return
         End If

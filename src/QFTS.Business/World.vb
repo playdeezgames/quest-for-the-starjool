@@ -96,12 +96,31 @@ Public Class World
         Return characterClass.CheckAbilitiesAndRace(_worldData.CharacterCreation.Abilities, _worldData.CharacterCreation.Race.Value)
     End Function
 
-    Public Sub ChooseClass(characterClass As CharacterClass) Implements IWorld.ChooseClass
+    Public Sub ChooseClass(characterClass As CharacterClass, random As Random) Implements IWorld.ChooseClass
         If Not NeedsClass Then
             Return
         End If
         _worldData.CharacterCreation.CharacterClass = characterClass
-        'finish character
-        'create world
+        Initialize()
+        FinishCharacter(random)
     End Sub
+
+    Private Sub FinishCharacter(random As Random)
+        Dim hitDie = Math.Min(_worldData.CharacterCreation.CharacterClass.Value.HitDie, _worldData.CharacterCreation.Race.Value.MaximumHitDie)
+        Dim hitPoints = 1 + Math.Max(0, random.Next(hitDie) + AbilityScoreBonus(_worldData.CharacterCreation.Abilities(Ability.Constitution)))
+        Dim gold As Decimal = (random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7)) * 10D
+        'create actual character data
+        'place character on map
+        'set player data
+        'remove character creation data
+    End Sub
+
+    Private Sub Initialize()
+        _worldData.Maps.Clear()
+        For Each mapFile In MapFiles
+            _worldData.Maps(mapFile.Key) = JsonSerializer.Deserialize(Of MapData)(File.ReadAllText(mapFile.Value))
+        Next
+    End Sub
+
+    Public Shared Property MapFiles As IReadOnlyDictionary(Of String, String)
 End Class

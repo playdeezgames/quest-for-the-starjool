@@ -1,6 +1,6 @@
 Public Interface IState
     Sub Update(elapsed As TimeSpan)
-    Sub OnKeyUp(keyName As String)
+    Sub OnKeyUp(keyName As String, random As Random)
     Sub OnKeyDown(keyName As String)
     Sub Reset()
     Sub Quit()

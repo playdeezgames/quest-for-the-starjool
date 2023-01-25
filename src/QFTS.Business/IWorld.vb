@@ -8,7 +8,7 @@
     Sub RollBackCharacterCreation()
     Sub ChooseRace(race As Race)
     Function CanChooseClass(characterClass As CharacterClass) As Boolean
-    Sub ChooseClass(characterClass As CharacterClass)
+    Sub ChooseClass(characterClass As CharacterClass, random As Random)
     ReadOnly Property NeedsClass As Boolean
     ReadOnly Property NeedsRace As Boolean
     ReadOnly Property IsCreatingCharacter As Boolean

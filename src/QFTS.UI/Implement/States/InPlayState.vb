@@ -19,6 +19,8 @@
             ElseIf _world.NeedsClass Then
                 SetState(State.ChooseClass)
             End If
+        Else
+            SetState(State.Navigation)
         End If
     End Sub
 End Class

@@ -24,6 +24,7 @@ Public Class QFTSGame
     Private stateMachine As IStateMachine
     Private keyboardState As KeyboardState
     Private world As IWorld
+    Private random As New Random
 
     Sub New()
         graphics = New GraphicsDeviceManager(Me)
@@ -70,7 +71,7 @@ Public Class QFTSGame
     Protected Overrides Sub Update(gameTime As GameTime)
         Dim newKeyboardState = Keyboard.GetState()
         For Each key In keyboardState.GetPressedKeys().Where(Function(x) Not newKeyboardState.IsKeyDown(x))
-            stateMachine.OnKeyUp(key.ToString())
+            stateMachine.OnKeyUp(key.ToString(), Random)
         Next
         For Each key In newKeyboardState.GetPressedKeys().Where(Function(x) Not keyboardState.IsKeyDown(x))
             stateMachine.OnKeyDown(key.ToString())

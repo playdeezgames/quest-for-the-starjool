@@ -11,13 +11,13 @@
         _menu.Update()
     End Sub
 
-    Public Overrides Sub OnKeyUp(keyName As String)
+    Public Overrides Sub OnKeyUp(keyName As String, random As Random)
         If _menu.OnKeyUp(keyName) Then
             Return
         End If
         Select Case keyName
             Case Enter
-                ActivateMenuItem()
+                ActivateMenuItem(random)
             Case Escape
                 GoBackToMainMenu()
         End Select
@@ -28,17 +28,17 @@
         SetState(State.MainMenu)
     End Sub
 
-    Private Sub ActivateMenuItem()
+    Private Sub ActivateMenuItem(random As Random)
         Select Case _menu.CurrentItem
             Case CancelText
                 GoBackToMainMenu()
             Case Else
-                ChooseClass(AllClasses.Single(Function(x) x.Name = _menu.CurrentItem))
+                ChooseClass(AllClasses.Single(Function(x) x.Name = _menu.CurrentItem), random)
         End Select
     End Sub
 
-    Private Sub ChooseClass(characterClass As CharacterClass)
-        _world.ChooseClass(characterClass)
+    Private Sub ChooseClass(characterClass As CharacterClass, random As Random)
+        _world.ChooseClass(characterClass, random)
         SetState(State.InPlay)
     End Sub
 

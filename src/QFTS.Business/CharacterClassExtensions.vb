@@ -11,6 +11,19 @@ Public Module CharacterClassExtensions
             CharacterClass.Thief
         }
     <Extension>
+    Public Function HitDie(characterClass As CharacterClass) As Integer
+        Select Case characterClass
+            Case CharacterClass.Cleric
+                Return 6
+            Case CharacterClass.Fighter, CharacterClass.FighterMagicUser
+                Return 8
+            Case CharacterClass.MagicUser, CharacterClass.MagicUserThief, CharacterClass.Thief
+                Return 4
+            Case Else
+                Throw New NotImplementedException
+        End Select
+    End Function
+    <Extension>
     Public Function CheckAbilitiesAndRace(characterClass As CharacterClass, abilities As IReadOnlyDictionary(Of Ability, Integer), race As Race) As Boolean
         Select Case characterClass
             Case CharacterClass.Cleric

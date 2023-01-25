@@ -3,9 +3,18 @@ Imports TiledLib.Layer
 Imports TiledLib.Objects
 
 Module Program
+    Private ReadOnly conversions As New List(Of (String, String)) From
+        {
+            ("..\..\..\..\..\maps\Overworld.tmx", "..\..\..\..\QuestForTheStarjool\Assets\Maps\Overworld.json"),
+            ("..\..\..\..\..\maps\Town1.tmx", "..\..\..\..\QuestForTheStarjool\Assets\Maps\Town1.json")
+        }
     Sub Main(args As String())
-        Dim fromFile = "E:\GIT\quest-for-the-starjool\maps\Overworld.tmx"
-        Dim toFile = "Overworld.json"
+        For Each conversion In conversions
+            ConvertFile(conversion.Item1, conversion.Item2)
+        Next
+    End Sub
+
+    Private Sub ConvertFile(fromFile As String, toFile As String)
         Dim mapData As New MapData
         Using stream = File.OpenRead(fromFile)
             Dim fromMap = Map.FromStream(stream)

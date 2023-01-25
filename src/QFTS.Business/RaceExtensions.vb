@@ -3,6 +3,17 @@
 Public Module RaceExtensions
     Public ReadOnly AllRaces As IReadOnlyList(Of Race) = New List(Of Race) From {Race.Dwarf, Race.Elf, Race.Halfling, Race.Human}
     <Extension>
+    Public Function MaximumHitDie(race As Race) As Integer
+        Select Case race
+            Case Race.Dwarf, Race.Human
+                Return 8
+            Case Race.Halfling, Race.Elf
+                Return 6
+            Case Else
+                Throw New NotImplementedException
+        End Select
+    End Function
+    <Extension>
     Public Function CheckAbilities(race As Race, abilities As IReadOnlyDictionary(Of Ability, Integer)) As Boolean
         Select Case race
             Case Race.Dwarf

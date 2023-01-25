@@ -11,7 +11,7 @@
         _menu.Update()
     End Sub
 
-    Public Overrides Sub OnKeyUp(keyName As String)
+    Public Overrides Sub OnKeyUp(keyName As String, random As Random)
         If _menu.OnKeyUp(keyName) Then
             Return
         End If
