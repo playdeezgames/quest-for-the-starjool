@@ -11,7 +11,7 @@ Friend MustInherit Class StateBase
         _random = random
     End Sub
     Public MustOverride Sub Update(elapsed As TimeSpan) Implements IState.Update
-    Public Overridable Sub OnKeyUp(keyName As String) Implements IState.OnKeyUp
+    Public Overridable Sub HandleKey(keyName As String) Implements IState.HandleKey
     End Sub
     Public MustOverride Sub Reset() Implements IState.Reset
 

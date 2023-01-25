@@ -70,7 +70,7 @@ Public Class QFTSGame
     Protected Overrides Sub Update(gameTime As GameTime)
         Dim newKeyboardState = Keyboard.GetState()
         For Each key In keyboardState.GetPressedKeys().Where(Function(x) Not newKeyboardState.IsKeyDown(x))
-            stateMachine.OnKeyUp(key.ToString())
+            stateMachine.HandleKey(key.ToString())
         Next
         keyboardState = newKeyboardState
         stateMachine.Update(gameTime.ElapsedGameTime)

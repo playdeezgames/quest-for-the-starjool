@@ -40,8 +40,8 @@ Public Class StateMachine
         '_textGrid.GetCell(52,29).Plot(&hbc,Hue.Brown, Hue.Black)
     End Sub
 
-    Public Sub OnKeyUp(keyName As String) Implements IStateMachine.OnKeyUp
-        _states(_state).OnKeyUp(keyName)
+    Public Sub HandleKey(keyName As String) Implements IStateMachine.HandleKey
+        _states(_state).HandleKey(keyName)
     End Sub
 
     Public Sub Reset() Implements IStateMachine.Reset
