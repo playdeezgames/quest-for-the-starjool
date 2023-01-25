@@ -13,7 +13,7 @@ Friend MustInherit Class StateBase
     Public MustOverride Sub Update(elapsed As TimeSpan) Implements IState.Update
     Public Overridable Sub OnKeyDown(keyName As String) Implements IState.OnKeyDown
     End Sub
-    Public Overridable Sub OnKeyUp(keyName As String, random As Random) Implements IState.OnKeyUp
+    Public Overridable Sub OnKeyUp(keyName As String) Implements IState.OnKeyUp
     End Sub
     Public MustOverride Sub Reset() Implements IState.Reset
 

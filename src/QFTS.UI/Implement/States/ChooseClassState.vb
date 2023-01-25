@@ -11,13 +11,13 @@
         _menu.Update()
     End Sub
 
-    Public Overrides Sub OnKeyUp(keyName As String, random As Random)
+    Public Overrides Sub OnKeyUp(keyName As String)
         If _menu.OnKeyUp(keyName) Then
             Return
         End If
         Select Case keyName
             Case Enter
-                ActivateMenuItem(random)
+                ActivateMenuItem(_random)
             Case Escape
                 GoBackToMainMenu()
         End Select

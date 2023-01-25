@@ -17,7 +17,7 @@ Friend Class SplashState
             _timeRemaining -= elapsed
         end if
     End Sub
-    Public Overrides Sub OnKeyUp(keyName As String, random As Random)
+    Public Overrides Sub OnKeyUp(keyName As String)
         SetState(State.MainMenu)
     End Sub
 End Class
