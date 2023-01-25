@@ -106,13 +106,28 @@ Public Class World
     End Sub
 
     Private Sub FinishCharacter(random As Random)
-        Dim hitDie = Math.Min(_worldData.CharacterCreation.CharacterClass.Value.HitDie, _worldData.CharacterCreation.Race.Value.MaximumHitDie)
-        Dim hitPoints = 1 + Math.Max(0, random.Next(hitDie) + AbilityScoreBonus(_worldData.CharacterCreation.Abilities(Ability.Constitution)))
-        Dim gold As Decimal = (random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7)) * 10D
-        'create actual character data
-        'place character on map
-        'set player data
-        'remove character creation data
+        Dim characterCreation = _worldData.CharacterCreation
+        Dim hitDie = Math.Min(characterCreation.CharacterClass.Value.HitDie, characterCreation.Race.Value.MaximumHitDie)
+        Dim characterData As New CharacterData With
+            {
+                .Abilities = characterCreation.Abilities,
+                .Race = characterCreation.Race.Value,
+                .CharacterClass = characterCreation.CharacterClass.Value,
+                .HitPoints = 1 + Math.Max(0, random.Next(hitDie) + AbilityScoreBonus(characterCreation.Abilities(Ability.Constitution))),
+                .Gold = (random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7)) * 10D
+            }
+        _worldData.Party = New PartyData With
+            {
+                .Characters = New List(Of CharacterData) From
+                {
+                    characterData
+                },
+                .MapName = InitialPlayerLocation.Item1,
+                .MapColumn = InitialPlayerLocation.Item2,
+                .MapRow = InitialPlayerLocation.Item3
+            }
+        _worldData.CharacterCreation = Nothing
+        PartyMap.GetCell(_worldData.Party.MapColumn, _worldData.Party.MapRow).Token = TokenType.Player
     End Sub
 
     Private Sub Initialize()
@@ -123,4 +138,11 @@ Public Class World
     End Sub
 
     Public Shared Property MapFiles As IReadOnlyDictionary(Of String, String)
+    Public Shared Property InitialPlayerLocation As (String, Integer, Integer)
+
+    Public ReadOnly Property PartyMap As IMap Implements IWorld.PartyMap
+        Get
+            Return New Map(_worldData, _worldData.Maps(_worldData.Party.MapName))
+        End Get
+    End Property
 End Class

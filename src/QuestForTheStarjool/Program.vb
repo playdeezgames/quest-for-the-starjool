@@ -9,6 +9,7 @@ Module Program
         }
     Sub Main(args As String())
         World.MapFiles = MapFiles
+        World.InitialPlayerLocation = ("Town1", 15, 30)
         Using game = New QFTSGame()
             game.Run()
         End Using

@@ -13,4 +13,5 @@
     ReadOnly Property NeedsRace As Boolean
     ReadOnly Property IsCreatingCharacter As Boolean
     ReadOnly Property NeedsAbilityScores As Boolean
+    ReadOnly Property PartyMap As IMap
 End Interface
