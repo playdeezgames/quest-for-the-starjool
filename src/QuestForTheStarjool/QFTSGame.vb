@@ -22,7 +22,7 @@ Public Class QFTSGame
     Private romFont As Texture2D
     Private textGrid As ITextGrid
     Private stateMachine As IStateMachine
-    Private keyboardState As KeyboardState
+    Private keyTable As New Dictionary(Of Keys, DateTimeOffset)
     Private world As IWorld
 
     Sub New()
@@ -60,19 +60,29 @@ Public Class QFTSGame
         textGrid = New TextGrid(ViewColumns, ViewRows)
         world = New World()
         stateMachine = New StateMachine(world, textGrid, AddressOf OnQuit)
-        keyboardState = Keyboard.GetState
     End Sub
 
     Private Sub OnQuit()
         [Exit]()
     End Sub
+    Private Const KeyRepeatInterval = 0.5
 
     Protected Overrides Sub Update(gameTime As GameTime)
-        Dim newKeyboardState = Keyboard.GetState()
-        For Each key In keyboardState.GetPressedKeys().Where(Function(x) Not newKeyboardState.IsKeyDown(x))
-            stateMachine.HandleKey(key.ToString())
+        Dim keyboardState = Keyboard.GetState()
+        keyTable = keyTable.Where(Function(x) keyboardState.IsKeyDown(x.Key)).ToDictionary(Function(x) x.Key, Function(x) x.Value)
+        For Each key In keyboardState.GetPressedKeys()
+            If keyTable.ContainsKey(key) Then
+                Dim rightNow = DateTimeOffset.Now
+                Dim sinceLastTime = rightNow - keyTable(key)
+                If sinceLastTime.TotalSeconds > KeyRepeatInterval Then
+                    keyTable(key) = rightNow
+                    stateMachine.HandleKey(key.ToString())
+                End If
+            Else
+                keyTable.Add(key, DateTimeOffset.Now)
+                stateMachine.HandleKey(key.ToString())
+            End If
         Next
-        keyboardState = newKeyboardState
         stateMachine.Update(gameTime.ElapsedGameTime)
         MyBase.Update(gameTime)
     End Sub
