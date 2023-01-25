@@ -72,9 +72,6 @@ Public Class QFTSGame
         For Each key In keyboardState.GetPressedKeys().Where(Function(x) Not newKeyboardState.IsKeyDown(x))
             stateMachine.OnKeyUp(key.ToString())
         Next
-        For Each key In newKeyboardState.GetPressedKeys().Where(Function(x) Not keyboardState.IsKeyDown(x))
-            stateMachine.OnKeyDown(key.ToString())
-        Next
         keyboardState = newKeyboardState
         stateMachine.Update(gameTime.ElapsedGameTime)
         MyBase.Update(gameTime)

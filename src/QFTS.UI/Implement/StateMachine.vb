@@ -44,10 +44,6 @@ Public Class StateMachine
         _states(_state).OnKeyUp(keyName)
     End Sub
 
-    Public Sub OnKeyDown(keyName As String) Implements IStateMachine.OnKeyDown
-        _states(_state).OnKeyDown(keyName)
-    End Sub
-
     Public Sub Reset() Implements IStateMachine.Reset
         For Each entry In _states
             entry.Value.Reset()
