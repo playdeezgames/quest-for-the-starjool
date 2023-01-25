@@ -1,3 +1,4 @@
 ﻿Public Interface IMapCell
-    Property Token As TokenType?
+    ReadOnly Property Terrain As TerrainType
+    ReadOnly Property Character As ICharacter
 End Interface

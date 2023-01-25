@@ -9,12 +9,18 @@
         _data = mapCellData
     End Sub
 
-    Public Property Token As TokenType? Implements IMapCell.Token
+    Public ReadOnly Property Terrain As TerrainType Implements IMapCell.Terrain
         Get
-            Return _data.Token
+            Return _data.Terrain
         End Get
-        Set(value As TokenType?)
-            _data.Token = value
-        End Set
+    End Property
+
+    Public ReadOnly Property Character As ICharacter Implements IMapCell.Character
+        Get
+            If _data.Character Is Nothing Then
+                Return Nothing
+            End If
+            Return New Character(_worldData, _data.Character)
+        End Get
     End Property
 End Class

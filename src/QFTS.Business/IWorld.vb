@@ -14,4 +14,5 @@
     ReadOnly Property IsCreatingCharacter As Boolean
     ReadOnly Property NeedsAbilityScores As Boolean
     ReadOnly Property PartyMap As IMap
+    ReadOnly Property Party As IPlayer
 End Interface

@@ -110,24 +110,22 @@ Public Class World
         Dim hitDie = Math.Min(characterCreation.CharacterClass.Value.HitDie, characterCreation.Race.Value.MaximumHitDie)
         Dim characterData As New CharacterData With
             {
+                .Token = TokenType.Player,
                 .Abilities = characterCreation.Abilities,
                 .Race = characterCreation.Race.Value,
                 .CharacterClass = characterCreation.CharacterClass.Value,
                 .HitPoints = 1 + Math.Max(0, random.Next(hitDie) + AbilityScoreBonus(characterCreation.Abilities(Ability.Constitution))),
                 .Gold = (random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7)) * 10D
             }
-        _worldData.Party = New PartyData With
+        _worldData.Player = New PlayerData With
             {
-                .Characters = New List(Of CharacterData) From
-                {
-                    characterData
-                },
                 .MapName = InitialPlayerLocation.Item1,
                 .MapColumn = InitialPlayerLocation.Item2,
                 .MapRow = InitialPlayerLocation.Item3
             }
         _worldData.CharacterCreation = Nothing
-        PartyMap.GetCell(_worldData.Party.MapColumn, _worldData.Party.MapRow).Token = TokenType.Player
+        Dim mapData = _worldData.Maps(_worldData.Player.MapName)
+        mapData.Cells(_worldData.Player.MapColumn + _worldData.Player.MapRow * mapData.Columns).Character = characterData
     End Sub
 
     Private Sub Initialize()
@@ -142,7 +140,13 @@ Public Class World
 
     Public ReadOnly Property PartyMap As IMap Implements IWorld.PartyMap
         Get
-            Return New Map(_worldData, _worldData.Maps(_worldData.Party.MapName))
+            Return New Map(_worldData, _worldData.Maps(_worldData.Player.MapName))
+        End Get
+    End Property
+
+    Public ReadOnly Property Party As IPlayer Implements IWorld.Party
+        Get
+            Return New Player(_worldData, _worldData.Player)
         End Get
     End Property
 End Class

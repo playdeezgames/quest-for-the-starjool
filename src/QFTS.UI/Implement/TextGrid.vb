@@ -31,8 +31,8 @@
         GetCell(column, row)?.Plot(character, foreground, background)
     End Sub
     Sub WriteText(column As Integer, row As Integer, text As String, foreground As Hue, background As Hue) Implements ITextGrid.WriteText
-        For Each character In text
-            Plot(column, row, CByte(AscW(character)), foreground, background)
+        For Each ch In text
+            Plot(column, row, CByte(AscW(ch)), foreground, background)
             column += 1
         Next
     End Sub
