@@ -138,13 +138,13 @@ Public Class World
     Public Shared Property MapFiles As IReadOnlyDictionary(Of String, String)
     Public Shared Property InitialPlayerLocation As (String, Integer, Integer)
 
-    Public ReadOnly Property PartyMap As IMap Implements IWorld.PartyMap
+    Public ReadOnly Property PlayerMap As IMap Implements IWorld.PlayerMap
         Get
             Return New Map(_worldData, _worldData.Maps(_worldData.Player.MapName))
         End Get
     End Property
 
-    Public ReadOnly Property Party As IPlayer Implements IWorld.Party
+    Public ReadOnly Property Player As IPlayer Implements IWorld.Player
         Get
             Return New Player(_worldData, _worldData.Player)
         End Get
