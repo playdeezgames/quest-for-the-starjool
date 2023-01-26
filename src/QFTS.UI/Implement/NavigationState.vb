@@ -42,5 +42,12 @@
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
         _textGrid.Fill(OffsetX, 0, Columns, 1, &HCD, Hue.Gray, Hue.DarkGray)
+        _textGrid.Fill(OffsetX, OffsetY + Rows, Columns, 1, &HCD, Hue.Gray, Hue.DarkGray)
+        _textGrid.Fill(0, OffsetY, 1, Rows, &HBA, Hue.Gray, Hue.DarkGray)
+        _textGrid.Fill(Columns + OffsetX, OffsetY, 1, Rows, &HBA, Hue.Gray, Hue.DarkGray)
+        _textGrid.Plot(0, 0, &HC9, Hue.Gray, Hue.DarkGray)
+        _textGrid.Plot(OffsetX + Columns, 0, &HBB, Hue.Gray, Hue.DarkGray)
+        _textGrid.Plot(0, OffsetY + Rows, &HC8, Hue.Gray, Hue.DarkGray)
+        _textGrid.Plot(OffsetX + Columns, OffsetY + Rows, &HBC, Hue.Gray, Hue.DarkGray)
     End Sub
 End Class

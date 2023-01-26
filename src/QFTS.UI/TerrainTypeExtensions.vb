@@ -8,8 +8,8 @@ Friend Module TerrainTypeExtensions
             {TerrainType.FenceCorner, (&H2B, Hue.White, Hue.Green)},
             {TerrainType.HorizontalFence, (&H2D, Hue.White, Hue.Green)},
             {TerrainType.VerticalFence, (&H7C, Hue.White, Hue.Green)},
-            {TerrainType.Road, (&HB0, Hue.Black, Hue.Blue)},
-            {TerrainType.Water, (&HF7, Hue.LightBlue, Hue.DarkGray)},
+            {TerrainType.Road, (&HB0, Hue.Black, Hue.DarkGray)},
+            {TerrainType.Water, (&HF7, Hue.LightBlue, Hue.Blue)},
             {TerrainType.House, (&H7F, Hue.Brown, Hue.Green)}
         }
     <Extension>
