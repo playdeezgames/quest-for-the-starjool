@@ -3,6 +3,7 @@
 ## TODO
 
 * move character creation into subobject for world
+* world.cancontinue doesn't seem right
 
 ## Finishing Character
 

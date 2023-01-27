@@ -23,23 +23,17 @@ Public Class World
     End Property
     Public ReadOnly Property NeedsAbilityScores As Boolean Implements IWorld.NeedsAbilityScores
         Get
-            Return IsCreatingCharacter AndAlso _worldData.CharacterCreation.Abilities Is Nothing
+            Return If(CharacterCreation?.NeedsAbilityScores, False)
         End Get
     End Property
     Public ReadOnly Property NeedsRace As Boolean Implements IWorld.NeedsRace
         Get
-            If _worldData.CharacterCreation Is Nothing Then
-                Return False
-            End If
-            Return _worldData.CharacterCreation.Race Is Nothing
+            Return If(CharacterCreation?.NeedsRace, False)
         End Get
     End Property
     Public ReadOnly Property NeedsClass As Boolean Implements IWorld.NeedsClass
         Get
-            If _worldData.CharacterCreation Is Nothing Then
-                Return False
-            End If
-            Return _worldData.CharacterCreation.CharacterClass Is Nothing
+            Return If(CharacterCreation?.NeedsClass, False)
         End Get
     End Property
     Sub New(worldData As WorldData)
@@ -52,10 +46,7 @@ Public Class World
         _worldData.CharacterCreation = New CharacterCreationData
     End Sub
     Public Sub AssignAbilities(abilities As IReadOnlyDictionary(Of Ability, Integer)) Implements IWorld.AssignAbilities
-        If _worldData.CharacterCreation Is Nothing Then
-            Return
-        End If
-        _worldData.CharacterCreation.Abilities = abilities.ToDictionary(Function(x) x.Key, Function(x) x.Value)
+        CharacterCreation?.AssignAbilities(abilities)
     End Sub
     Public Function CanChooseRace(race As Race) As Boolean Implements IWorld.CanChooseRace
         If Not NeedsRace Then
