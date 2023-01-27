@@ -2,8 +2,8 @@
     Inherits StateBase
     Private ReadOnly _menu As IMenu
 
-    Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
-        MyBase.New(world, stateMachine, textGrid, random)
+    Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)
+        MyBase.New(world, stateMachine, textGrid)
         _menu = New Menu(textGrid, 0, 2, Hue.White, Hue.Black)
     End Sub
 

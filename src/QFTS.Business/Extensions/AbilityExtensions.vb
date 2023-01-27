@@ -24,6 +24,9 @@ Public Module AbilityExtensions
     Function AbilityScoreBonus(score As Integer) As Integer
         Return bonusTable(score)
     End Function
+    Function RollAbilityScore() As Integer
+        Return RNG.FromRange(1, 6) + RNG.FromRange(1, 6) + RNG.FromRange(1, 6)
+    End Function
     Private abbreviationTable As IReadOnlyDictionary(Of Ability, String) =
         New Dictionary(Of Ability, String) From
         {

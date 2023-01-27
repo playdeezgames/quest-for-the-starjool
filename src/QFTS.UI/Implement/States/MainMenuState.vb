@@ -1,8 +1,8 @@
 Friend Class MainMenuState
     Inherits StateBase
     Private ReadOnly _menu As IMenu
-    Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
-        MyBase.New(world, stateMachine, textGrid, random)
+    Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)
+        MyBase.New(world, stateMachine, textGrid)
         _menu = New Menu(textGrid, 0, 2, Hue.White, Hue.Black)
     End Sub
     Public Overrides Sub Reset()

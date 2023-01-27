@@ -1,8 +1,8 @@
 ﻿Friend Class ConfirmQuitState
     Inherits StateBase
     Private ReadOnly _menu As Menu
-    Public Sub New(world As IWorld, stateMachine As StateMachine, textGrid As ITextGrid, random As Random)
-        MyBase.New(world, stateMachine, textGrid, random)
+    Public Sub New(world As IWorld, stateMachine As StateMachine, textGrid As ITextGrid)
+        MyBase.New(world, stateMachine, textGrid)
         _menu = New Menu(textGrid, 0, 2, Hue.White, Hue.Black)
     End Sub
     Public Overrides Sub Update(elapsed As TimeSpan)

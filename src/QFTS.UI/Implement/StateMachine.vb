@@ -11,15 +11,14 @@ Public Class StateMachine
         _quit = quit
         _textGrid = textGrid
         _state = State.None
-        Dim random As New Random
-        _states.Add(State.Splash, New SplashState(world, Me, _textGrid, random))
-        _states.Add(State.MainMenu, New MainMenuState(world, Me, _textGrid, random))
-        _states.Add(State.ConfirmQuit, New ConfirmQuitState(world, Me, _textGrid, random))
-        _states.Add(State.InPlay, New InPlayState(world, Me, _textGrid, random))
-        _states.Add(State.RollAbilities, New RollAbilitiesState(world, Me, _textGrid, random))
-        _states.Add(State.ChooseRace, New ChooseRaceState(world, Me, _textGrid, random))
-        _states.Add(State.ChooseClass, New ChooseClassState(world, Me, _textGrid, random))
-        _states.Add(State.Navigation, New NavigationState(world, Me, _textGrid, random))
+        _states.Add(State.Splash, New SplashState(world, Me, _textGrid))
+        _states.Add(State.MainMenu, New MainMenuState(world, Me, _textGrid))
+        _states.Add(State.ConfirmQuit, New ConfirmQuitState(world, Me, _textGrid))
+        _states.Add(State.InPlay, New InPlayState(world, Me, _textGrid))
+        _states.Add(State.RollAbilities, New RollAbilitiesState(world, Me, _textGrid))
+        _states.Add(State.ChooseRace, New ChooseRaceState(world, Me, _textGrid))
+        _states.Add(State.ChooseClass, New ChooseClassState(world, Me, _textGrid))
+        _states.Add(State.Navigation, New NavigationState(world, Me, _textGrid))
         State = State.Splash
     End Sub
 

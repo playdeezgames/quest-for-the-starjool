@@ -2,8 +2,8 @@ Friend Class SplashState
     Inherits StateBase
     Private Const SecondsRemaining = SplashDuration
     Private _timeRemaining as TimeSpan
-    Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
-        MyBase.New(world, stateMachine, textGrid, random)
+    Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)
+        MyBase.New(world, stateMachine, textGrid)
     End Sub
     Public Overrides Sub Reset()
         _textGrid.FillAll(0,Hue.Black, Hue.Black)

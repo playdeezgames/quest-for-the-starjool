@@ -3,8 +3,8 @@
     Private ReadOnly _abilities As New Dictionary(Of Ability, Integer)
     Private ReadOnly _menu As IMenu
 
-    Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
-        MyBase.New(world, stateMachine, textGrid, random)
+    Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)
+        MyBase.New(world, stateMachine, textGrid)
         _menu = New Menu(textGrid, 0, 9, Hue.White, Hue.Black)
     End Sub
 
@@ -64,11 +64,11 @@
 
     Private Sub RollAbilities()
         _abilities.Clear()
-        _abilities.Add(Ability.Strength, _random.Next(1, 7) + _random.Next(1, 7) + _random.Next(1, 7))
-        _abilities.Add(Ability.Intelligence, _random.Next(1, 7) + _random.Next(1, 7) + _random.Next(1, 7))
-        _abilities.Add(Ability.Wisdom, _random.Next(1, 7) + _random.Next(1, 7) + _random.Next(1, 7))
-        _abilities.Add(Ability.Dexterity, _random.Next(1, 7) + _random.Next(1, 7) + _random.Next(1, 7))
-        _abilities.Add(Ability.Constitution, _random.Next(1, 7) + _random.Next(1, 7) + _random.Next(1, 7))
-        _abilities.Add(Ability.Charisma, _random.Next(1, 7) + _random.Next(1, 7) + _random.Next(1, 7))
+        _abilities.Add(Ability.Strength, RollAbilityScore)
+        _abilities.Add(Ability.Intelligence, RollAbilityScore)
+        _abilities.Add(Ability.Wisdom, RollAbilityScore)
+        _abilities.Add(Ability.Dexterity, RollAbilityScore)
+        _abilities.Add(Ability.Constitution, RollAbilityScore)
+        _abilities.Add(Ability.Charisma, RollAbilityScore)
     End Sub
 End Class

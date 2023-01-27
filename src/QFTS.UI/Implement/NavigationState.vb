@@ -1,8 +1,8 @@
 ﻿Friend Class NavigationState
     Inherits StateBase
 
-    Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid, random As Random)
-        MyBase.New(world, stateMachine, textGrid, random)
+    Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)
+        MyBase.New(world, stateMachine, textGrid)
     End Sub
 
     Const OffsetX = 1
