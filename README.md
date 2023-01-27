@@ -1,5 +1,9 @@
 # Quest for the Starjool!!
 
+## TODO
+
+* move character creation into subobject for world
+
 ## Finishing Character
 
 * Roll HP

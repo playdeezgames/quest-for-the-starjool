@@ -130,4 +130,13 @@ Public Class World
             Return New Player(_worldData, _worldData.Player)
         End Get
     End Property
+
+    Public ReadOnly Property CharacterCreation As ICharacterCreation Implements IWorld.CharacterCreation
+        Get
+            If _worldData.CharacterCreation Is Nothing Then
+                Return Nothing
+            End If
+            Return New CharacterCreation(_worldData, _worldData.CharacterCreation)
+        End Get
+    End Property
 End Class

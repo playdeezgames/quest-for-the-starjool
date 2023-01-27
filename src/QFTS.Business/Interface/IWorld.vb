@@ -15,4 +15,5 @@
     Sub ChooseClass(characterClass As CharacterClass, random As Random)
     ReadOnly Property PlayerMap As IMap
     ReadOnly Property Player As IPlayer
+    ReadOnly Property CharacterCreation As ICharacterCreation
 End Interface
