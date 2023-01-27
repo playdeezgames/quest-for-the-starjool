@@ -16,4 +16,10 @@
             Return _data.MapRow
         End Get
     End Property
+
+    Public ReadOnly Property CurrentMap As String Implements IPlayer.CurrentMap
+        Get
+            Return _data.MapName
+        End Get
+    End Property
 End Class

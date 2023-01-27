@@ -11,12 +11,19 @@
             Return _data.Terrain
         End Get
     End Property
-    Public ReadOnly Property Character As ICharacter Implements IMapCell.Character
+    Public Property Character As ICharacter Implements IMapCell.Character
         Get
             If _data.Character Is Nothing Then
                 Return Nothing
             End If
             Return New Character(_worldData, _data.Character)
         End Get
+        Set(value As ICharacter)
+            If value Is Nothing Then
+                _data.Character = Nothing
+                Return
+            End If
+            _data.Character = DirectCast(value, Character)._data
+        End Set
     End Property
 End Class

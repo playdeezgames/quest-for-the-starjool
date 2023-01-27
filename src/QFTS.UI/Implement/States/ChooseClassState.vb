@@ -17,7 +17,7 @@
         End If
         Select Case keyName
             Case Enter
-                ActivateMenuItem(_random)
+                ActivateMenuItem()
             Case Escape
                 GoBackToMainMenu()
         End Select
@@ -28,17 +28,17 @@
         SetState(State.MainMenu)
     End Sub
 
-    Private Sub ActivateMenuItem(random As Random)
+    Private Sub ActivateMenuItem()
         Select Case _menu.CurrentItem
             Case CancelText
                 GoBackToMainMenu()
             Case Else
-                ChooseClass(AllClasses.Single(Function(x) x.Name = _menu.CurrentItem), random)
+                ChooseClass(AllClasses.Single(Function(x) x.Name = _menu.CurrentItem))
         End Select
     End Sub
 
-    Private Sub ChooseClass(characterClass As CharacterClass, random As Random)
-        _world.ChooseClass(characterClass, random)
+    Private Sub ChooseClass(characterClass As CharacterClass)
+        _world.ChooseClass(characterClass)
         SetState(State.InPlay)
     End Sub
 
