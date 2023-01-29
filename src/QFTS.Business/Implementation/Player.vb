@@ -16,10 +16,38 @@
             Return _data.MapRow
         End Get
     End Property
-
     Public ReadOnly Property CurrentMap As String Implements IPlayer.CurrentMap
         Get
             Return _data.MapName
         End Get
     End Property
+
+    Public ReadOnly Property World As IWorld Implements IPlayer.World
+        Get
+            Return New World(_worldData)
+        End Get
+    End Property
+
+    Public Sub MoveNorth() Implements IPlayer.MoveNorth
+        MoveBy(0, -1)
+    End Sub
+    Private Sub MoveBy(deltaX As Integer, deltaY As Integer)
+        Dim currentCell = World.PlayerMap.GetCell(_data.MapColumn, _data.MapRow)
+        Dim nextCell = World.PlayerMap.GetCell(_data.MapColumn + deltaX, _data.MapRow + deltaY)
+        If currentCell.Character.CanEnter(nextCell) Then
+            nextCell.Character = currentCell.Character
+            currentCell.Character = Nothing
+            _data.MapColumn += deltaX
+            _data.MapRow += deltaY
+        End If
+    End Sub
+    Public Sub MoveSouth() Implements IPlayer.MoveSouth
+        MoveBy(0, 1)
+    End Sub
+    Public Sub MoveWest() Implements IPlayer.MoveWest
+        MoveBy(-1, 0)
+    End Sub
+    Public Sub MoveEast() Implements IPlayer.MoveEast
+        MoveBy(1, 0)
+    End Sub
 End Class

@@ -26,4 +26,16 @@
             _data.Character = DirectCast(value, Character)._data
         End Set
     End Property
+
+    Public ReadOnly Property HasCharacter As Boolean Implements IMapCell.HasCharacter
+        Get
+            Return _data.Character IsNot Nothing
+        End Get
+    End Property
+
+    Public ReadOnly Property CanHaveCharacter As Boolean Implements IMapCell.CanHaveCharacter
+        Get
+            Return _data.Terrain.ToDescriptor.CanHaveCharacter
+        End Get
+    End Property
 End Class

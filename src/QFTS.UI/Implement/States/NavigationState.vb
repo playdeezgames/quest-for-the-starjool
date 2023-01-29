@@ -1,17 +1,14 @@
 ﻿Friend Class NavigationState
     Inherits StateBase
-
     Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)
         MyBase.New(world, stateMachine, textGrid)
     End Sub
-
     Const OffsetX = 1
     Const OffsetY = 1
     Const DeltaX = -18
     Const DeltaY = -11
     Const Columns = 37
     Const Rows = 23
-
     Public Overrides Sub Update(elapsed As TimeSpan)
         For column = 0 To Columns - 1
             For row = 0 To Rows - 1
@@ -30,15 +27,30 @@
             Next
         Next
     End Sub
-
+    Public Overrides Sub HandleKey(keyName As String)
+        Select Case keyName
+            Case Up
+                _world.Player.MoveNorth()
+                SetState(State.InPlay)
+            Case Down
+                _world.Player.MoveSouth()
+                SetState(State.InPlay)
+            Case Left
+                _world.Player.MoveWest()
+                SetState(State.InPlay)
+            Case Right
+                _world.Player.MoveEast()
+                SetState(State.InPlay)
+            Case Escape
+                'bring up context menu
+        End Select
+    End Sub
     Private Sub RenderTerrain(column As Integer, row As Integer, terrain As TerrainType)
         _textGrid.Plot(column, row, terrain.Character, terrain.Foreground, terrain.Background)
     End Sub
-
     Private Sub RenderToken(column As Integer, row As Integer, token As TokenType)
         _textGrid.Plot(column, row, token.Character, token.Foreground, token.Background)
     End Sub
-
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
         _textGrid.Fill(OffsetX, 0, Columns, 1, &HCD, Hue.Gray, Hue.DarkGray)
