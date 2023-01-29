@@ -8,7 +8,7 @@ Public Class World
     End Property
     Public ReadOnly Property CanContinue As Boolean Implements IWorld.CanContinue
         Get
-            Return _data.CharacterCreation IsNot Nothing
+            Return _data.CharacterCreation IsNot Nothing OrElse _data.Player IsNot Nothing
         End Get
     End Property
     Public ReadOnly Property CanAbandon As Boolean Implements IWorld.CanAbandon
