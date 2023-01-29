@@ -36,19 +36,19 @@
 
     Public ReadOnly Property Race As Race Implements ICharacterCreation.Race
         Get
-            Throw New NotImplementedException()
+            Return _data.Race.Value
         End Get
     End Property
 
     Public ReadOnly Property CharacterClass As CharacterClass Implements ICharacterCreation.CharacterClass
         Get
-            Throw New NotImplementedException()
+            Return _data.CharacterClass.Value
         End Get
     End Property
 
     Public ReadOnly Property Abilities As IReadOnlyDictionary(Of Ability, Integer) Implements ICharacterCreation.Abilities
         Get
-            Throw New NotImplementedException()
+            Return _data.Abilities
         End Get
     End Property
 

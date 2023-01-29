@@ -43,6 +43,6 @@ Public Module RaceExtensions
         }
     <Extension>
     Public Function Name(race As Race) As String
-        Return Name(race)
+        Return nameTable(race)
     End Function
 End Module
