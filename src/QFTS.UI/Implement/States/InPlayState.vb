@@ -20,6 +20,8 @@
                 SetState(State.ChooseClass)
             End If
         Else
+            While _world.Player.RunTrigger()
+            End While
             SetState(State.Navigation)
         End If
     End Sub

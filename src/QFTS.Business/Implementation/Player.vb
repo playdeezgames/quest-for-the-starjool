@@ -39,6 +39,7 @@
             currentCell.Character = Nothing
             _data.MapColumn += deltaX
             _data.MapRow += deltaY
+            _data.TriggerIndex = 0
         End If
     End Sub
     Public Sub MoveSouth() Implements IPlayer.MoveSouth
@@ -49,5 +50,26 @@
     End Sub
     Public Sub MoveEast() Implements IPlayer.MoveEast
         MoveBy(1, 0)
+    End Sub
+    Public Function RunTrigger() As Boolean Implements IPlayer.RunTrigger
+        Dim mapCell = World.PlayerMap.GetCell(_data.MapColumn, _data.MapRow)
+        Dim triggers = mapCell.Triggers.ToList
+        If _data.TriggerIndex >= triggers.Count Then
+            Return False
+        End If
+        Dim trigger = triggers(_data.TriggerIndex)
+        _data.TriggerIndex += 1
+        trigger.Execute()
+        Return True
+    End Function
+    Public Sub MoveTo(map As IMap, destinationX As Integer, destinationY As Integer) Implements IPlayer.MoveTo
+        Dim currentCell = World.PlayerMap.GetCell(_data.MapColumn, _data.MapRow)
+        Dim nextCell = map.GetCell(destinationX, destinationY)
+        nextCell.Character = currentCell.Character
+        currentCell.Character = Nothing
+        _data.MapName = map.Name
+        _data.MapColumn = destinationX
+        _data.MapRow = destinationY
+        _data.TriggerIndex = 0
     End Sub
 End Class

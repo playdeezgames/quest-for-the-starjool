@@ -92,7 +92,7 @@ Public Class World
     Public Shared Property InitialPlayerLocation As (String, Integer, Integer)
     Public ReadOnly Property PlayerMap As IMap Implements IWorld.PlayerMap
         Get
-            Return New Map(_data, _data.Maps(_data.Player.MapName))
+            Return New Map(_data, _data.Maps(_data.Player.MapName), _data.Player.MapName)
         End Get
     End Property
 
@@ -116,7 +116,7 @@ Public Class World
             If Not _data.Maps.ContainsKey(mapName) Then
                 Return Nothing
             End If
-            Return New Map(_data, _data.Maps(mapName))
+            Return New Map(_data, _data.Maps(mapName), mapName)
         End Get
     End Property
 End Class

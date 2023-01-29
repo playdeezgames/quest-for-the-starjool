@@ -42,7 +42,7 @@
    <properties>
     <property name="DestinationMap" value="Overworld"/>
     <property name="DestinationX" type="int" value="10"/>
-    <property name="DestinationY" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="9"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
   </object>
@@ -50,7 +50,7 @@
    <properties>
     <property name="DestinationMap" value="Overworld"/>
     <property name="DestinationX" type="int" value="10"/>
-    <property name="DestinationY" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="9"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
   </object>
@@ -58,7 +58,7 @@
    <properties>
     <property name="DestinationMap" value="Overworld"/>
     <property name="DestinationX" type="int" value="10"/>
-    <property name="DestinationY" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="11"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
   </object>
@@ -66,14 +66,14 @@
    <properties>
     <property name="DestinationMap" value="Overworld"/>
     <property name="DestinationX" type="int" value="10"/>
-    <property name="DestinationY" type="int" value="10"/>
+    <property name="DestinationY" type="int" value="11"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
   </object>
   <object id="7" gid="256" x="0" y="256" width="16" height="16">
    <properties>
     <property name="DestinationMap" value="Overworld"/>
-    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationX" type="int" value="9"/>
     <property name="DestinationY" type="int" value="10"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
@@ -81,7 +81,7 @@
   <object id="8" gid="256" x="0" y="272" width="16" height="16">
    <properties>
     <property name="DestinationMap" value="Overworld"/>
-    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationX" type="int" value="9"/>
     <property name="DestinationY" type="int" value="10"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
@@ -89,7 +89,7 @@
   <object id="9" gid="256" x="496" y="256" width="16" height="16">
    <properties>
     <property name="DestinationMap" value="Overworld"/>
-    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationX" type="int" value="11"/>
     <property name="DestinationY" type="int" value="10"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
@@ -97,7 +97,7 @@
   <object id="10" gid="256" x="496" y="272" width="16" height="16">
    <properties>
     <property name="DestinationMap" value="Overworld"/>
-    <property name="DestinationX" type="int" value="10"/>
+    <property name="DestinationX" type="int" value="11"/>
     <property name="DestinationY" type="int" value="10"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
