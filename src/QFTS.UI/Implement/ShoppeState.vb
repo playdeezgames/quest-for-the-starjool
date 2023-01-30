@@ -33,6 +33,7 @@
     End Sub
     Public Overrides Sub Reset()
         _textGrid.FillAll(0, Hue.Black, Hue.Black)
+        _textGrid.WriteText(0, 0, _world.Player.Shoppe.Name, Hue.White, Hue.Black)
         _menu.Clear()
         _menu.AddItem(LeaveText)
     End Sub

@@ -65,7 +65,8 @@ Module Program
                 .Shoppe = New ShoppeData With
                 {
                     .Offers = ProcessPriceList(o.Properties("Offers")),
-                    .Prices = ProcessPriceList(o.Properties("Prices"))
+                    .Prices = ProcessPriceList(o.Properties("Prices")),
+                    .Name = o.Properties("Name")
                 }
             }
         mapCellData.Triggers.Add(triggerData)
