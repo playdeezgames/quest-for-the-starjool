@@ -17,6 +17,7 @@ Public Class StateMachine
         _states.Add(State.ChooseRace, New ChooseRaceState(world, Me, _textGrid))
         _states.Add(State.ChooseClass, New ChooseClassState(world, Me, _textGrid))
         _states.Add(State.Navigation, New NavigationState(world, Me, _textGrid))
+        _states.Add(State.Shoppe, New ShoppeState(world, Me, _textGrid))
         State = State.Splash
     End Sub
     Public Sub Update(elapsed As TimeSpan) Implements IStateMachine.Update

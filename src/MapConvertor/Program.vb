@@ -1,5 +1,4 @@
 Imports System.IO
-Imports System.Text.Json.Serialization
 Imports TiledLib.Layer
 Imports TiledLib.Objects
 

@@ -8,5 +8,7 @@
     Sub MoveEast()
     Function RunTrigger() As Boolean
     Sub MoveTo(map As IMap, destinationX As Integer, destinationY As Integer)
+    Sub LeaveShoppe()
     ReadOnly Property World As IWorld
+    Property Shoppe As IShoppe
 End Interface

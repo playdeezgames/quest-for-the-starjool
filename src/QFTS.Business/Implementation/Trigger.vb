@@ -28,7 +28,7 @@
         End Select
     End Sub
     Private Sub ExecuteShoppe(shoppe As ShoppeData)
-        Throw New NotImplementedException()
+        World.Player.Shoppe = New Shoppe(_worldData, shoppe)
     End Sub
     Private Sub ExecuteTeleport(data As TeleportTriggerData)
         World.Player.MoveTo(World.Map(data.DestinationMap), data.DestinationX, data.DestinationY)

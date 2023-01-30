@@ -28,6 +28,22 @@
         End Get
     End Property
 
+    Public Property Shoppe As IShoppe Implements IPlayer.Shoppe
+        Get
+            If _data.Shoppe Is Nothing Then
+                Return Nothing
+            End If
+            Return New Shoppe(_worldData, _data.Shoppe)
+        End Get
+        Set(value As IShoppe)
+            If value Is Nothing Then
+                _data.Shoppe = Nothing
+                Return
+            End If
+            _data.Shoppe = DirectCast(value, Shoppe)._data
+        End Set
+    End Property
+
     Public Sub MoveNorth() Implements IPlayer.MoveNorth
         MoveBy(0, -1)
     End Sub
@@ -71,5 +87,9 @@
         _data.MapColumn = destinationX
         _data.MapRow = destinationY
         _data.TriggerIndex = 0
+    End Sub
+
+    Public Sub LeaveShoppe() Implements IPlayer.LeaveShoppe
+        Shoppe = Nothing
     End Sub
 End Class

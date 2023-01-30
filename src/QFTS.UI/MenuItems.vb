@@ -8,4 +8,5 @@
     Friend Const AbandonText = "Abandon Game"
     Friend Const ContinueGame = "Continue Game"
     Friend Const QuitText = "Quit"
+    Friend Const LeaveText = "Leave"
 End Module
