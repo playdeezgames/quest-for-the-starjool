@@ -27,6 +27,10 @@
         Select Case _menu.CurrentItem
             Case LeaveText
                 LeaveShoppe()
+            Case BuyText
+                SetState(State.ShoppeBuy)
+            Case SellText
+                SetState(State.ShoppeSell)
             Case Else
                 Throw New NotImplementedException
         End Select
@@ -35,6 +39,12 @@
         TextGrid.FillAll(0, Hue.Black, Hue.Black)
         TextGrid.WriteText(0, 0, World.Player.Shoppe.Name, Hue.White, Hue.Black)
         _menu.Clear()
+        If World.Player.Shoppe.CanBuy Then
+            _menu.AddItem(BuyText)
+        End If
+        If World.Player.Shoppe.CanSell Then
+            _menu.AddItem(SellText)
+        End If
         _menu.AddItem(LeaveText)
     End Sub
 End Class

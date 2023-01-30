@@ -18,6 +18,8 @@ Public Class StateMachine
         _states.Add(State.ChooseClass, New ChooseClassState(world, Me, _textGrid))
         _states.Add(State.Navigation, New NavigationState(world, Me, _textGrid))
         _states.Add(State.ShoppeWelcome, New ShoppeWelcomeState(world, Me, _textGrid))
+        _states.Add(State.ShoppeBuy, New ShoppeBuyState(world, Me, _textGrid))
+        _states.Add(State.ShoppeSell, New ShoppeSellState(world, Me, _textGrid))
         State = State.Splash
     End Sub
     Public Sub Update(elapsed As TimeSpan) Implements IStateMachine.Update

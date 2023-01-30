@@ -9,4 +9,6 @@
     Friend Const ContinueGame = "Continue Game"
     Friend Const QuitText = "Quit"
     Friend Const LeaveText = "Leave"
+    Friend Const BuyText = "Buy"
+    Friend Const SellText = "Sell"
 End Module

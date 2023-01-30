@@ -9,4 +9,6 @@ Public Enum State
     ChooseClass
     Navigation
     ShoppeWelcome
+    ShoppeBuy
+    ShoppeSell
 End Enum
