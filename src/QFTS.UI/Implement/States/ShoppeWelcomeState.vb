@@ -1,4 +1,4 @@
-﻿Friend Class ShoppeState
+﻿Friend Class ShoppeWelcomeState
     Inherits StateBase
     Private ReadOnly _menu As IMenu
     Public Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)

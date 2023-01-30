@@ -8,5 +8,5 @@ Public Enum State
     ChooseRace
     ChooseClass
     Navigation
-    Shoppe
+    ShoppeWelcome
 End Enum

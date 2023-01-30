@@ -23,7 +23,7 @@
             While _world.Player.RunTrigger()
             End While
             If _world.Player.Shoppe IsNot Nothing Then
-                SetState(State.Shoppe)
+                SetState(State.ShoppeWelcome)
             Else
                 SetState(State.Navigation)
             End If
