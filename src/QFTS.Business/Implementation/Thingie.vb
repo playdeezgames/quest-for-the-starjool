@@ -1,4 +1,4 @@
-﻿Friend Class Thingie(Of TData)
+﻿Friend MustInherit Class Thingie(Of TData)
     Private ReadOnly _worldData As WorldData
     Private ReadOnly _data As TData
     Protected ReadOnly Property WorldData As WorldData
