@@ -1,61 +1,56 @@
 ﻿Friend Class Player
+    Inherits Thingie(Of PlayerData)
     Implements IPlayer
-    Private _worldData As WorldData
-    Private _data As PlayerData
     Public Sub New(worldData As WorldData, player As PlayerData)
-        _worldData = worldData
-        _data = player
+        MyBase.New(worldData, player)
     End Sub
     Public ReadOnly Property X As Integer Implements IPlayer.X
         Get
-            Return _data.MapColumn
+            Return Data.MapColumn
         End Get
     End Property
     Public ReadOnly Property Y As Integer Implements IPlayer.Y
         Get
-            Return _data.MapRow
+            Return Data.MapRow
         End Get
     End Property
     Public ReadOnly Property CurrentMap As String Implements IPlayer.CurrentMap
         Get
-            Return _data.MapName
+            Return Data.MapName
         End Get
     End Property
-
     Public ReadOnly Property World As IWorld Implements IPlayer.World
         Get
-            Return New World(_worldData)
+            Return New World(WorldData)
         End Get
     End Property
-
     Public Property Shoppe As IShoppe Implements IPlayer.Shoppe
         Get
-            If _data.Shoppe Is Nothing Then
+            If Data.Shoppe Is Nothing Then
                 Return Nothing
             End If
-            Return New Shoppe(_worldData, _data.Shoppe)
+            Return New Shoppe(WorldData, Data.Shoppe)
         End Get
         Set(value As IShoppe)
             If value Is Nothing Then
-                _data.Shoppe = Nothing
+                Data.Shoppe = Nothing
                 Return
             End If
-            _data.Shoppe = DirectCast(value, Shoppe)._data
+            Data.Shoppe = DirectCast(value, Shoppe).Data
         End Set
     End Property
-
     Public Sub MoveNorth() Implements IPlayer.MoveNorth
         MoveBy(0, -1)
     End Sub
     Private Sub MoveBy(deltaX As Integer, deltaY As Integer)
-        Dim currentCell = World.PlayerMap.GetCell(_data.MapColumn, _data.MapRow)
-        Dim nextCell = World.PlayerMap.GetCell(_data.MapColumn + deltaX, _data.MapRow + deltaY)
+        Dim currentCell = World.PlayerMap.GetCell(Data.MapColumn, Data.MapRow)
+        Dim nextCell = World.PlayerMap.GetCell(Data.MapColumn + deltaX, Data.MapRow + deltaY)
         If currentCell.Character.CanEnter(nextCell) Then
             nextCell.Character = currentCell.Character
             currentCell.Character = Nothing
-            _data.MapColumn += deltaX
-            _data.MapRow += deltaY
-            _data.TriggerIndex = 0
+            Data.MapColumn += deltaX
+            Data.MapRow += deltaY
+            Data.TriggerIndex = 0
         End If
     End Sub
     Public Sub MoveSouth() Implements IPlayer.MoveSouth
@@ -68,27 +63,26 @@
         MoveBy(1, 0)
     End Sub
     Public Function RunTrigger() As Boolean Implements IPlayer.RunTrigger
-        Dim mapCell = World.PlayerMap.GetCell(_data.MapColumn, _data.MapRow)
+        Dim mapCell = World.PlayerMap.GetCell(Data.MapColumn, Data.MapRow)
         Dim triggers = mapCell.Triggers.ToList
-        If _data.TriggerIndex >= triggers.Count Then
+        If Data.TriggerIndex >= triggers.Count Then
             Return False
         End If
-        Dim trigger = triggers(_data.TriggerIndex)
-        _data.TriggerIndex += 1
+        Dim trigger = triggers(Data.TriggerIndex)
+        Data.TriggerIndex += 1
         trigger.Execute()
         Return True
     End Function
     Public Sub MoveTo(map As IMap, destinationX As Integer, destinationY As Integer) Implements IPlayer.MoveTo
-        Dim currentCell = World.PlayerMap.GetCell(_data.MapColumn, _data.MapRow)
+        Dim currentCell = World.PlayerMap.GetCell(Data.MapColumn, Data.MapRow)
         Dim nextCell = map.GetCell(destinationX, destinationY)
         nextCell.Character = currentCell.Character
         currentCell.Character = Nothing
-        _data.MapName = map.Name
-        _data.MapColumn = destinationX
-        _data.MapRow = destinationY
-        _data.TriggerIndex = 0
+        Data.MapName = map.Name
+        Data.MapColumn = destinationX
+        Data.MapRow = destinationY
+        Data.TriggerIndex = 0
     End Sub
-
     Public Sub LeaveShoppe() Implements IPlayer.LeaveShoppe
         Shoppe = Nothing
     End Sub

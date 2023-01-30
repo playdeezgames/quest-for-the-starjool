@@ -1,34 +1,32 @@
 ﻿Friend Class Trigger
+    Inherits Thingie(Of TriggerData)
     Implements ITrigger
-    Private _worldData As WorldData
-    Private _data As TriggerData
     Public Sub New(worldData As WorldData, x As TriggerData)
-        _worldData = worldData
-        _data = x
+        MyBase.New(worldData, x)
     End Sub
     Public ReadOnly Property World As IWorld Implements ITrigger.World
         Get
-            Return New World(_worldData)
+            Return New World(WorldData)
         End Get
     End Property
 
     Private ReadOnly Property TriggerType As TriggerType
         Get
-            Return _data.TriggerType
+            Return Data.TriggerType
         End Get
     End Property
     Public Sub Execute() Implements ITrigger.Execute
         Select Case TriggerType
             Case TriggerType.Teleport
-                ExecuteTeleport(_data.Teleport)
+                ExecuteTeleport(Data.Teleport)
             Case TriggerType.Shoppe
-                ExecuteShoppe(_data.Shoppe)
+                ExecuteShoppe(Data.Shoppe)
             Case Else
                 Throw New NotImplementedException
         End Select
     End Sub
     Private Sub ExecuteShoppe(shoppe As ShoppeData)
-        World.Player.Shoppe = New Shoppe(_worldData, shoppe)
+        World.Player.Shoppe = New Shoppe(WorldData, shoppe)
     End Sub
     Private Sub ExecuteTeleport(data As TeleportTriggerData)
         World.Player.MoveTo(World.Map(data.DestinationMap), data.DestinationX, data.DestinationY)
