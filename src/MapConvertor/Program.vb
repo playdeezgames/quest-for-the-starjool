@@ -40,6 +40,7 @@ Module Program
     Private Const DestinationXProperty = "DestinationX"
     Private Const DestinationYProperty = "DestinationY"
     Private Const TeleportTriggerTypeName = "Teleport"
+    Private Const ShoppeTriggerTypeName = "Shoppe"
 
     Private Sub LoadObjectLayer(l As ObjectLayer, mapData As MapData, cellWidth As Integer, cellHeight As Integer)
         For Each o In l.Objects.OrderBy(Function(x) CInt(x.Properties("Order")))
@@ -49,8 +50,19 @@ Module Program
             Select Case o.Properties(TriggerTypeProperty)
                 Case TeleportTriggerTypeName
                     AddTeleportTrigger(mapData.Cells(cellIndex), o)
+                Case ShoppeTriggerTypeName
+                    AddShoppeTrigger(mapData.Cells(cellIndex), o)
+                Case Else
+                    Throw New NotImplementedException
             End Select
         Next
+    End Sub
+
+    Private Sub AddShoppeTrigger(mapCellData As MapCellData, o As BaseObject)
+        Dim triggerData As New TriggerData With
+            {
+                .TriggerType = TriggerType.Shoppe
+            }
     End Sub
 
     Private Sub AddTeleportTrigger(mapCellData As MapCellData, o As BaseObject)
