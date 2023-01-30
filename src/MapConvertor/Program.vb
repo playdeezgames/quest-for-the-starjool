@@ -42,7 +42,7 @@ Module Program
     Private Const TeleportTriggerTypeName = "Teleport"
 
     Private Sub LoadObjectLayer(l As ObjectLayer, mapData As MapData, cellWidth As Integer, cellHeight As Integer)
-        For Each o In l.Objects
+        For Each o In l.Objects.OrderBy(Function(x) CInt(x.Properties("Order")))
             Dim column = CInt(o.X) \ cellWidth
             Dim row = CInt(o.Y) \ cellHeight - 1
             Dim cellIndex = column + row * mapData.Columns

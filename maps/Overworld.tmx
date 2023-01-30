@@ -270,6 +270,7 @@
     <property name="DestinationMap" value="Town1"/>
     <property name="DestinationX" type="int" value="16"/>
     <property name="DestinationY" type="int" value="30"/>
+    <property name="Order" type="int" value="1"/>
     <property name="TriggerType" value="Teleport"/>
    </properties>
   </object>
