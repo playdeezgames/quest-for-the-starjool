@@ -20,6 +20,7 @@ Module Program
             Dim fromMap = Map.FromStream(stream)
             Dim cellHeight = fromMap.CellHeight
             Dim cellWidth = fromMap.CellWidth
+            mapData.DefaultTerrain = CType(fromMap.Properties("DefaultTerrain"), TerrainType)
             For Each l In fromMap.Layers
                 Select Case l.LayerType
                     Case LayerType.tilelayer
