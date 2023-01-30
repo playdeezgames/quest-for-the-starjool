@@ -46,20 +46,20 @@
         End Select
     End Sub
     Private Sub RenderTerrain(column As Integer, row As Integer, terrain As TerrainType)
-        _textGrid.Plot(column, row, terrain.Character, terrain.Foreground, terrain.Background)
+        TextGrid.Plot(column, row, terrain.Character, terrain.Foreground, terrain.Background)
     End Sub
     Private Sub RenderToken(column As Integer, row As Integer, token As TokenType)
-        _textGrid.Plot(column, row, token.Character, token.Foreground, token.Background)
+        TextGrid.Plot(column, row, token.Character, token.Foreground, token.Background)
     End Sub
     Public Overrides Sub Reset()
-        _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.Fill(OffsetX, 0, Columns, 1, &HCD, Hue.Gray, Hue.DarkGray)
-        _textGrid.Fill(OffsetX, OffsetY + Rows, Columns, 1, &HCD, Hue.Gray, Hue.DarkGray)
-        _textGrid.Fill(0, OffsetY, 1, Rows, &HBA, Hue.Gray, Hue.DarkGray)
-        _textGrid.Fill(Columns + OffsetX, OffsetY, 1, Rows, &HBA, Hue.Gray, Hue.DarkGray)
-        _textGrid.Plot(0, 0, &HC9, Hue.Gray, Hue.DarkGray)
-        _textGrid.Plot(OffsetX + Columns, 0, &HBB, Hue.Gray, Hue.DarkGray)
-        _textGrid.Plot(0, OffsetY + Rows, &HC8, Hue.Gray, Hue.DarkGray)
-        _textGrid.Plot(OffsetX + Columns, OffsetY + Rows, &HBC, Hue.Gray, Hue.DarkGray)
+        TextGrid.FillAll(0, Hue.Black, Hue.Black)
+        TextGrid.Fill(OffsetX, 0, Columns, 1, &HCD, Hue.Gray, Hue.DarkGray)
+        TextGrid.Fill(OffsetX, OffsetY + Rows, Columns, 1, &HCD, Hue.Gray, Hue.DarkGray)
+        TextGrid.Fill(0, OffsetY, 1, Rows, &HBA, Hue.Gray, Hue.DarkGray)
+        TextGrid.Fill(Columns + OffsetX, OffsetY, 1, Rows, &HBA, Hue.Gray, Hue.DarkGray)
+        TextGrid.Plot(0, 0, &HC9, Hue.Gray, Hue.DarkGray)
+        TextGrid.Plot(OffsetX + Columns, 0, &HBB, Hue.Gray, Hue.DarkGray)
+        TextGrid.Plot(0, OffsetY + Rows, &HC8, Hue.Gray, Hue.DarkGray)
+        TextGrid.Plot(OffsetX + Columns, OffsetY + Rows, &HBC, Hue.Gray, Hue.DarkGray)
     End Sub
 End Class

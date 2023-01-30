@@ -1,11 +1,16 @@
 Friend MustInherit Class StateBase
     Implements IState
     Private ReadOnly _stateMachine As IStateMachine
-    Protected ReadOnly _textGrid As ITextGrid
+    Private ReadOnly _textGrid As ITextGrid
     Private ReadOnly _world As IWorld
     Protected ReadOnly Property World As IWorld
         Get
             Return _world
+        End Get
+    End Property
+    Protected ReadOnly Property TextGrid As ITextGrid
+        Get
+            Return _textGrid
         End Get
     End Property
     Sub New(world As IWorld, stateMachine As IStateMachine, textGrid As ITextGrid)

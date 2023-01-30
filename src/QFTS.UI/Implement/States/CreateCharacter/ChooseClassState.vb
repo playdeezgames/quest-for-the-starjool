@@ -43,8 +43,8 @@
     End Sub
 
     Public Overrides Sub Reset()
-        _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.WriteText(0, 0, ChooseClassHeader, Hue.White, Hue.Black)
+        TextGrid.FillAll(0, Hue.Black, Hue.Black)
+        TextGrid.WriteText(0, 0, ChooseClassHeader, Hue.White, Hue.Black)
         _menu.Clear()
         For Each characterClass In AllClasses
             If World.CanChooseClass(characterClass) Then

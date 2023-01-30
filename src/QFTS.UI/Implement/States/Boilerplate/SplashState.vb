@@ -6,8 +6,8 @@ Friend Class SplashState
         MyBase.New(world, stateMachine, textGrid)
     End Sub
     Public Overrides Sub Reset()
-        _textGrid.FillAll(0,Hue.Black, Hue.Black)
-        _textGrid.WriteText((GridColumns - Title.Length) \ 2, GridRows \ 2, Title, Hue.White, Hue.Black)
+        TextGrid.FillAll(0, Hue.Black, Hue.Black)
+        TextGrid.WriteText((GridColumns - Title.Length) \ 2, GridRows \ 2, Title, Hue.White, Hue.Black)
         _timeRemaining = TimeSpan.FromSeconds(SecondsRemaining)
     End Sub
     Public Overrides Sub Update(elapsed As TimeSpan)

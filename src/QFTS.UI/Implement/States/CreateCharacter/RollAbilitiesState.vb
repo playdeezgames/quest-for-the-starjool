@@ -9,12 +9,12 @@
     End Sub
 
     Public Overrides Sub Update(elapsed As TimeSpan)
-        _textGrid.WriteText(4, 2, $"{_abilities(Ability.Strength),2}", Hue.White, Hue.Black)
-        _textGrid.WriteText(4, 3, $"{_abilities(Ability.Intelligence),2}", Hue.White, Hue.Black)
-        _textGrid.WriteText(4, 4, $"{_abilities(Ability.Wisdom),2}", Hue.White, Hue.Black)
-        _textGrid.WriteText(4, 5, $"{_abilities(Ability.Dexterity),2}", Hue.White, Hue.Black)
-        _textGrid.WriteText(4, 6, $"{_abilities(Ability.Constitution),2}", Hue.White, Hue.Black)
-        _textGrid.WriteText(4, 7, $"{_abilities(Ability.Charisma),2}", Hue.White, Hue.Black)
+        TextGrid.WriteText(4, 2, $"{_abilities(Ability.Strength),2}", Hue.White, Hue.Black)
+        TextGrid.WriteText(4, 3, $"{_abilities(Ability.Intelligence),2}", Hue.White, Hue.Black)
+        TextGrid.WriteText(4, 4, $"{_abilities(Ability.Wisdom),2}", Hue.White, Hue.Black)
+        TextGrid.WriteText(4, 5, $"{_abilities(Ability.Dexterity),2}", Hue.White, Hue.Black)
+        TextGrid.WriteText(4, 6, $"{_abilities(Ability.Constitution),2}", Hue.White, Hue.Black)
+        TextGrid.WriteText(4, 7, $"{_abilities(Ability.Charisma),2}", Hue.White, Hue.Black)
         _menu.Update()
     End Sub
 
@@ -24,15 +24,15 @@
         _menu.AddItem(RerollText)
         _menu.AddItem(CancelText)
 
-        _textGrid.FillAll(0, Hue.Black, Hue.Black)
-        _textGrid.WriteText(0, 0, RollAbilitiesHeader, Hue.White, Hue.Black)
+        TextGrid.FillAll(0, Hue.Black, Hue.Black)
+        TextGrid.WriteText(0, 0, RollAbilitiesHeader, Hue.White, Hue.Black)
 
-        _textGrid.WriteText(0, 2, Ability.Strength.Abbreviation, Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 3, Ability.Intelligence.Abbreviation, Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 4, Ability.Wisdom.Abbreviation, Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 5, Ability.Dexterity.Abbreviation, Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 6, Ability.Constitution.Abbreviation, Hue.White, Hue.Black)
-        _textGrid.WriteText(0, 7, Ability.Charisma.Abbreviation, Hue.White, Hue.Black)
+        TextGrid.WriteText(0, 2, Ability.Strength.Abbreviation, Hue.White, Hue.Black)
+        TextGrid.WriteText(0, 3, Ability.Intelligence.Abbreviation, Hue.White, Hue.Black)
+        TextGrid.WriteText(0, 4, Ability.Wisdom.Abbreviation, Hue.White, Hue.Black)
+        TextGrid.WriteText(0, 5, Ability.Dexterity.Abbreviation, Hue.White, Hue.Black)
+        TextGrid.WriteText(0, 6, Ability.Constitution.Abbreviation, Hue.White, Hue.Black)
+        TextGrid.WriteText(0, 7, Ability.Charisma.Abbreviation, Hue.White, Hue.Black)
         RollAbilities()
     End Sub
 
