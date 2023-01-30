@@ -44,7 +44,7 @@
             Case Enter
                 ActivateMenuItem()
             Case Escape
-                _world.RollBackCharacterCreation()
+                World.RollBackCharacterCreation()
                 SetState(State.MainMenu)
         End Select
     End Sub
@@ -52,12 +52,12 @@
     Private Sub ActivateMenuItem()
         Select Case _menu.CurrentItem
             Case AcceptText
-                _world.AssignAbilities(_abilities)
+                World.AssignAbilities(_abilities)
                 SetState(State.InPlay)
             Case RerollText
                 RollAbilities()
             Case CancelText
-                _world.RollBackCharacterCreation()
+                World.RollBackCharacterCreation()
                 SetState(State.MainMenu)
         End Select
     End Sub

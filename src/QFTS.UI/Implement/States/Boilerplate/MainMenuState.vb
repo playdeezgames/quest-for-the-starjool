@@ -10,13 +10,13 @@ Friend Class MainMenuState
         _textGrid.WriteText(0, 0, MainMenuHeader, Hue.White, Hue.Black)
 
         _menu.Clear()
-        If _world.CanStart Then
+        If World.CanStart Then
             _menu.AddItem(StartText)
         End If
-        If _world.CanContinue Then
+        If World.CanContinue Then
             _menu.AddItem(ContinueGame)
         End If
-        If _world.CanAbandon Then
+        If World.CanAbandon Then
             _menu.AddItem(AbandonText)
         End If
         _menu.AddItem(QuitText)
@@ -40,7 +40,7 @@ Friend Class MainMenuState
             Case QuitText
                 SetState(State.ConfirmQuit)
             Case StartText
-                _world.Start()
+                World.Start()
                 SetState(State.InPlay)
             Case ContinueGame
                 SetState(State.InPlay)

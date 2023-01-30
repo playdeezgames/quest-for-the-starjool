@@ -24,7 +24,7 @@
     End Sub
 
     Private Sub GoBackToMainMenu()
-        _world.RollBackCharacterCreation()
+        World.RollBackCharacterCreation()
         SetState(State.MainMenu)
     End Sub
 
@@ -38,7 +38,7 @@
     End Sub
 
     Private Sub ChooseClass(characterClass As CharacterClass)
-        _world.ChooseClass(characterClass)
+        World.ChooseClass(characterClass)
         SetState(State.InPlay)
     End Sub
 
@@ -47,7 +47,7 @@
         _textGrid.WriteText(0, 0, ChooseClassHeader, Hue.White, Hue.Black)
         _menu.Clear()
         For Each characterClass In AllClasses
-            If _world.CanChooseClass(characterClass) Then
+            If World.CanChooseClass(characterClass) Then
                 _menu.AddItem(characterClass.Name)
             End If
         Next

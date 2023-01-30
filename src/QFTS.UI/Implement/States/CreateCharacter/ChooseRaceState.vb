@@ -33,12 +33,12 @@
     End Sub
 
     Private Sub RollBackCharacterCreation()
-        _world.RollBackCharacterCreation()
+        World.RollBackCharacterCreation()
         SetState(State.MainMenu)
     End Sub
 
     Private Sub ChooseRace(race As Race)
-        _world.ChooseRace(race)
+        World.ChooseRace(race)
         SetState(State.InPlay)
     End Sub
 
@@ -47,7 +47,7 @@
         _textGrid.WriteText(0, 0, ChooseRaceHeader, Hue.White, Hue.Black)
         _menu.Clear()
         For Each race In AllRaces
-            If _world.CanChooseRace(race) Then
+            If World.CanChooseRace(race) Then
                 _menu.AddItem(race.Name)
             End If
         Next

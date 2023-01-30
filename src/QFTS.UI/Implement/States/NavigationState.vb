@@ -12,11 +12,11 @@
     Public Overrides Sub Update(elapsed As TimeSpan)
         For column = 0 To Columns - 1
             For row = 0 To Rows - 1
-                Dim fromX = _world.Player.X + DeltaX + column
-                Dim fromY = _world.Player.Y + DeltaY + row
+                Dim fromX = World.Player.X + DeltaX + column
+                Dim fromY = World.Player.Y + DeltaY + row
                 Dim toX = OffsetX + column
                 Dim toY = OffsetY + row
-                Dim cell = _world.PlayerMap.GetCell(fromX, fromY)
+                Dim cell = World.PlayerMap.GetCell(fromX, fromY)
                 If cell IsNot Nothing Then
                     If cell.Character?.Token IsNot Nothing Then
                         RenderToken(toX, toY, cell.Character.Token)
@@ -30,16 +30,16 @@
     Public Overrides Sub HandleKey(keyName As String)
         Select Case keyName
             Case Up
-                _world.Player.MoveNorth()
+                World.Player.MoveNorth()
                 SetState(State.InPlay)
             Case Down
-                _world.Player.MoveSouth()
+                World.Player.MoveSouth()
                 SetState(State.InPlay)
             Case Left
-                _world.Player.MoveWest()
+                World.Player.MoveWest()
                 SetState(State.InPlay)
             Case Right
-                _world.Player.MoveEast()
+                World.Player.MoveEast()
                 SetState(State.InPlay)
             Case Escape
                 'bring up context menu

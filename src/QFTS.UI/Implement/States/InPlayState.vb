@@ -11,18 +11,18 @@
     End Sub
 
     Public Overrides Sub Reset()
-        If _world.IsCreatingCharacter Then
-            If _world.NeedsAbilityScores Then
+        If World.IsCreatingCharacter Then
+            If World.NeedsAbilityScores Then
                 SetState(State.RollAbilities)
-            ElseIf _world.NeedsRace Then
+            ElseIf World.NeedsRace Then
                 SetState(State.ChooseRace)
-            ElseIf _world.NeedsClass Then
+            ElseIf World.NeedsClass Then
                 SetState(State.ChooseClass)
             End If
         Else
-            While _world.Player.RunTrigger()
+            While World.Player.RunTrigger()
             End While
-            If _world.Player.Shoppe IsNot Nothing Then
+            If World.Player.Shoppe IsNot Nothing Then
                 SetState(State.ShoppeWelcome)
             Else
                 SetState(State.Navigation)
