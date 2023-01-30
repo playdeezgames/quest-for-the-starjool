@@ -10,7 +10,9 @@ Friend Module TerrainTypeExtensions
             {TerrainType.VerticalFence, (&H7C, Hue.White, Hue.Green)},
             {TerrainType.Road, (&HB0, Hue.Black, Hue.DarkGray)},
             {TerrainType.Water, (&HF7, Hue.LightBlue, Hue.Blue)},
-            {TerrainType.House, (&H7F, Hue.Brown, Hue.Green)}
+            {TerrainType.House, (&H7F, Hue.Brown, Hue.Green)},
+            {TerrainType.Hole, (&H0, Hue.Black, Hue.Black)},
+            {TerrainType.Wall, (&H23, Hue.DarkGray, Hue.Gray)}
         }
     <Extension>
     Friend Function Foreground(terrainType As TerrainType) As Hue

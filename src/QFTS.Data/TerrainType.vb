@@ -7,4 +7,6 @@
     Road
     Water
     House
+    Hole
+    Wall
 End Enum

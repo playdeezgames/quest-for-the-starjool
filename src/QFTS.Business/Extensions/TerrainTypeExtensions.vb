@@ -51,6 +51,20 @@ Public Module TerrainTypeExtensions
                 {
                     .CanHaveCharacter = False
                 }
+            },
+            {
+                TerrainType.Hole,
+                New TerrainDescriptor With
+                {
+                    .CanHaveCharacter = True
+                }
+            },
+            {
+                TerrainType.Wall,
+                New TerrainDescriptor With
+                {
+                    .CanHaveCharacter = False
+                }
             }
         }
     <Extension>
