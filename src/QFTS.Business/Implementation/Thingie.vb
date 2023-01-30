@@ -6,7 +6,7 @@
             Return _worldData
         End Get
     End Property
-    Protected ReadOnly Property Data As TData
+    Friend ReadOnly Property Data As TData
         Get
             Return _data
         End Get

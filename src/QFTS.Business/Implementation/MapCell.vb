@@ -23,7 +23,7 @@
                 _data.Character = Nothing
                 Return
             End If
-            _data.Character = DirectCast(value, Character)._data
+            _data.Character = DirectCast(value, Character).Data
         End Set
     End Property
     Public ReadOnly Property HasCharacter As Boolean Implements IMapCell.HasCharacter
