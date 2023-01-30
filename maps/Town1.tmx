@@ -118,7 +118,9 @@
   </object>
   <object id="12" gid="256" x="304" y="320" width="16" height="16">
    <properties>
+    <property name="Offers" value="{&quot;1&quot;:0.1}"/>
     <property name="Order" type="int" value="1"/>
+    <property name="Prices" value="{&quot;1&quot;:0.2}"/>
     <property name="TriggerType" value="Shoppe"/>
    </properties>
   </object>

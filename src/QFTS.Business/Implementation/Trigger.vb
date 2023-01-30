@@ -21,7 +21,14 @@
         Select Case TriggerType
             Case TriggerType.Teleport
                 ExecuteTeleport(_data.Teleport)
+            Case TriggerType.Shoppe
+                ExecuteShoppe(_data.Shoppe)
+            Case Else
+                Throw New NotImplementedException
         End Select
+    End Sub
+    Private Sub ExecuteShoppe(shoppe As ShoppeData)
+        Throw New NotImplementedException()
     End Sub
     Private Sub ExecuteTeleport(data As TeleportTriggerData)
         World.Player.MoveTo(World.Map(data.DestinationMap), data.DestinationX, data.DestinationY)

@@ -1,4 +1,5 @@
 Imports System.IO
+Imports System.Text.Json.Serialization
 Imports TiledLib.Layer
 Imports TiledLib.Objects
 
@@ -61,9 +62,20 @@ Module Program
     Private Sub AddShoppeTrigger(mapCellData As MapCellData, o As BaseObject)
         Dim triggerData As New TriggerData With
             {
-                .TriggerType = TriggerType.Shoppe
+                .TriggerType = TriggerType.Shoppe,
+                .Shoppe = New ShoppeData With
+                {
+                    .Offers = ProcessPriceList(o.Properties("Offers")),
+                    .Prices = ProcessPriceList(o.Properties("Prices"))
+                }
             }
+        mapCellData.Triggers.Add(triggerData)
     End Sub
+
+    Private Function ProcessPriceList(input As String) As Dictionary(Of ItemType, Decimal)
+        Return JsonSerializer.Deserialize(Of Dictionary(Of Integer, Decimal))(input).
+            ToDictionary(Function(x) CType(x.Key, ItemType), Function(x) x.Value)
+    End Function
 
     Private Sub AddTeleportTrigger(mapCellData As MapCellData, o As BaseObject)
         Dim triggerData As New TriggerData With

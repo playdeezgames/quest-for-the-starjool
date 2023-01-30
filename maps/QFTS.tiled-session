@@ -47,7 +47,7 @@
         "Overworld.tmx"
     ],
     "project": "QFTS.tiled-project",
-    "property.type": "file",
+    "property.type": "string",
     "recentFiles": [
         "Default.tsx",
         "Town1.tmx",
