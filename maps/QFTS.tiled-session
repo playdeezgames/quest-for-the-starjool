@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Overworld.tmx",
+    "activeFile": "Town1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -30,8 +30,8 @@
             "scale": 1.6624999999999999,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 255.63909774436092,
-                "y": 255.33834586466168
+                "x": 320.60150375939855,
+                "y": 255.03759398496243
             }
         }
     },
@@ -50,8 +50,8 @@
     "property.type": "string",
     "recentFiles": [
         "Default.tsx",
-        "Town1.tmx",
-        "Overworld.tmx"
+        "Overworld.tmx",
+        "Town1.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
